@@ -9,7 +9,6 @@ public class MAIN {
 	public static void main(String[] args) {
 		Scanner inp = new Scanner(System.in);
         int choice = 0;
-       
         do {
             
             

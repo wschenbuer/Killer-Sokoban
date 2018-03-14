@@ -5,13 +5,15 @@ public class Box extends Obstacle implements Steppable  {
 	
 	public void HitBy(Box b){}
 	
-	@Override
-	public void  Step(Direction d){}
-	
 	public Square GetSquare(){
 		return null;
 	}
 	public void Eliminate(){}
+
+	public void Step() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 }
