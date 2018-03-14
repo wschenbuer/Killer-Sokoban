@@ -223,7 +223,8 @@ public class MAIN {
 	if (answer4=='Y')
 	     {
 	       square.Remove(worker);
-	      }
+	      }else return;
+	
 	     square.Remove(box);
 	System.out.println("can we remove box from square? Y/N  ");
 	       String reader5= scanner.nextLine();
@@ -243,6 +244,9 @@ public class MAIN {
 	     }
 	else  return;
 	}
+	
+	
+	
 	/*Function here*/
 	 public static void workerDiesBySandwich(Worker worker,Box box,Square square,Direction d,Obstacle obstacle,Game game) 
 	 {
@@ -341,7 +345,100 @@ public class MAIN {
 	        
 	        floor.Eliminate(box);
 	    }
+		/*Function here*/
+		public static void SwitchOff(Box box, Worker worker, Switch s,Direction d,Square square,Hole hole)
+		{
+		       worker.Move(d);
+		       box.HitBy(worker);
+		       s.HitBy(box);
+		       square.GetNeighbor(d);
+		       Scanner scanner = new Scanner(System.in);
+		        System.out.println("Does square1 has a neighbor? Y/N  ");
+		       String reader1= scanner.nextLine();
+		       char answer1=reader1.charAt(0);
+		      if (answer1=='Y')
+		     {
+		       square.GetNeighbor(d);
+		      }
+		     else  return;
+		       square.GetNeighbor(d);
+		System.out.println("Does square2 has a neighbor? Y/N  ");
+		       String reader2= scanner.nextLine();
+		       char answer2=reader2.charAt(0);
+		if (answer2=='Y')
+		     {
+		       square.GetNeighbor(d);
+		     }
+		else  return;
+		       square.GetNeighbor(d);
+		System.out.println("Does square3 has a neighbor? Y/N  ");
+		       String reader3= scanner.nextLine();
+		       char answer3=reader3.charAt(0);
+		if (answer3=='Y')
+		     {
+		       square.GetNeighbor(d);
+		     }
+		else  return;
+		       square.Remove(worker);
+		System.out.println("can we remove worker from square? Y/N  ");
+		       String reader4= scanner.nextLine();
+		       char answer4=reader4.charAt(0);
+		if (answer4=='Y')
+		     {
+		       square.Remove(worker);
+		      }else return;
+		
+		     square.Remove(box);
+		System.out.println("can we remove box from square? Y/N  ");
+		       String reader5= scanner.nextLine();
+		       char answer5=reader5.charAt(0);
+		if (answer5=='Y')
+		     {
+		     square.Remove(box);
+		     }
+		else  return;
 
+		System.out.println("can we turn off? Y/N  ");
+		       String reader6= scanner.nextLine();
+		       char answer6=reader6.charAt(0);
+		if (answer6=='Y')
+		     {
+		     hole.SwitchedOFF();
+		     }
+		else  return;
+		}
+	/*Function here*/
+		public static void WorkerMove(Square square, Worker worker, Direction d,Thing t)
+		{
+			square.GetNeighbor(d);
+			System.out.println("Is there a Neighbor for square? N/Y");
+			
+			Scanner scanner = new Scanner(System.in);
+			String reader = scanner.nextLine();
+			char answer = reader.charAt(0);
+			if(answer=='Y'){square.GetNeighbor(d);}
+			else return;
+			
+			square.Accept(worker);
+			System.out.println("Accept worker to next square? Y/N");
+			
+			reader = scanner.nextLine();
+			answer = reader.charAt(0);
+			if(answer=='Y'){square.Accept(worker);}
+			else return;
+			
+			square.Remove(worker);
+			System.out.println("Remove worker from previous square? Y/N");
+			reader = scanner.nextLine();
+			answer = reader.charAt(0);
+			if(answer=='Y'){square.Remove(worker);;}
+			else return;
+			
+			
+			
+			
+		}
+		
 	
 	public static void main(String[] args) {
 		
@@ -389,9 +486,9 @@ public class MAIN {
                 	
                 case 8:SwitchOn(box,worker,switch1,d,square, hole);break;
                 	
-                case 9:
+                case 9:SwitchOff(box, worker,switch1, d,square, hole);break;
                 	
-                case 10:
+                case 10:WorkerMove(square, worker,d,thing);break;
                 	
                 case 11: boxDisappear(worker,box,floor,game,obstacle,
            			 hole,switch1, square, d); break;
