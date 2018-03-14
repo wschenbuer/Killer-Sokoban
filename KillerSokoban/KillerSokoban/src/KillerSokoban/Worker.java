@@ -3,7 +3,8 @@ package KillerSokoban;
 public class Worker extends Thing {
 	
 	public void Move(Direction d){
-		System.out.println("[:Worker].Move(" + d.toString() + ")");
+		//System.out.println("[:Worker].Move(" + d.toString() + ")");
+		System.out.println("[:Worker].Move(d)");
 	}
 	
 	public void Die(){

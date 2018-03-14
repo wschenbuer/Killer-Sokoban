@@ -13,10 +13,10 @@ public class Hole extends Thing {
 	}
 	
 	public void SwitchedOn(){
-		System.out.println("[:Hole].SwitchOn(so)");
+		System.out.println("[:Hole].SwitchOn()");
 	}
 	
 	public void SwitchedOFF(){
-		System.out.println("[:Hole].SwitchOFF(so)");
+		System.out.println("[:Hole].SwitchOFF()");
 	}
 }
