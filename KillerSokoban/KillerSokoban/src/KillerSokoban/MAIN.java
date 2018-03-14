@@ -13,7 +13,9 @@ public class MAIN {
 		Box box = new Box();
 		Floor floor = new Floor();
 		Game game = new Game();
-		
+		Obstacle obstacle = new Obstacle();
+		Hole hole = new Hole();
+		Switch switch1 = new Switch();
 		
 		Scanner inp = new Scanner(System.in);
         int choice = 0;
