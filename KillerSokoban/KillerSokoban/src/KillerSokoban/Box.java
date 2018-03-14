@@ -7,7 +7,7 @@ public class Box extends Obstacle implements Steppable  {
 	
 	public void Step(Direction d){}
 	public Square GetSquare(){
-		return Square;
+		return null;
 	}
 	public void Eliminate(){}
 }

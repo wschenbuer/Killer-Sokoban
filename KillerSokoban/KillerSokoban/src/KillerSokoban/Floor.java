@@ -7,7 +7,8 @@ public class Floor implements Steppable
 
 	private ArrayList<Square> square = new ArrayList<Square>();
 	
-	public Worker GetWorker(Square s){}
+	public Worker GetWorker(Square s){
+		return null;}
 	
 	public void CreateThing(){};
 	
