@@ -38,48 +38,48 @@ public class CaseFunctions {
 		
 		
 		
-		square.Remove(t);
+		square.Remove(worker);
 		
 		System.out.println("Can we remove worker1 from square?Y/N");
 		reader = scanner.nextLine();
 		answer = reader.charAt(0);
-		if(answer=='Y'){square.GetNeighbor(d);}
+		if(answer=='Y'){square.Remove(worker);}
 		
 		
 		
 		
-		square.Remove(t);
 		
+		square.Remove(box);
 		System.out.println("Can we remove box1 from square?Y/N");
 		reader = scanner.nextLine();
 		answer = reader.charAt(0);
-		if(answer=='Y'){square.GetNeighbor(d);}
+		if(answer=='Y'){square.Remove(box);}
 		
 		
-		
+		square.Accept(worker);
 		System.out.println("Can we accept worker1 from square?Y/N");
 		reader = scanner.nextLine();
 		answer = reader.charAt(0);
-		if(answer=='Y'){square.GetNeighbor(d);}
+		if(answer=='Y'){square.Accept(worker);}
 		
 		
-		
+		square.Accept(box);
 		System.out.println("Can we accept box1 from square?Y/N");
 		reader = scanner.nextLine();
 		answer = reader.charAt(0);
-		if(answer=='Y'){square.GetNeighbor(d);}
+		if(answer=='Y'){square.Accept(box);}
 		
 		
 		
 		
 		
 	}
-	public static void BoxPushBox1(Worker worker, Box b1, Square square,
+	public static void BoxPushBox1(Worker worker, Box box, Square square,
 			 Thing t, Direction d) {	
 		
 		worker.Move(d);
-		b1.HitBy(worker);
-		worker.HitBy(b1);
+		worker.HitBy(worker);
+		worker.HitBy(worker);
 		square.GetNeighbor(d);
 		
 		Scanner scanner = new Scanner(System.in);
@@ -108,59 +108,59 @@ public class CaseFunctions {
 	    }else
 	    	return;
 	    
+	    square.Remove(worker);
 	    System.out.print("Can we remove worker1 from square? Y/N");
 	    String input3 = scanner.nextLine();
 	    char c3 = input3.charAt(0);
 	    if(c3 == 'Y'){
-	    	square.Remove(t);
+	    	square.Remove(worker);
 	    }else
 	    	return;
 	    
-	    System.out.print("Can we remove box from square? Y/N");
+	    square.Remove(box);
+	    System.out.print("Can we remove box1 from square? Y/N");
 	    String input4 = scanner.nextLine();
 	    char c4 = input4.charAt(0);
 	    if(c4 == 'Y'){
-	    	square.Remove(t);
+	    	square.Remove(box);
 	    }else
 	    	return;
 	    
-	    System.out.print("Can we remove worker2 from square? Y/N");
+	    square.Remove(box);
+	    System.out.print("Can we remove box2 from square? Y/N");
 	    String input5 = scanner.nextLine();
 	    char c5 = input5.charAt(0);
 	    if(c5 == 'Y'){
-	    	square.Remove(t);
+	    	square.Remove(box);
 	    }else
 	    	return;
 	    
-	    System.out.print("Can we remove worker2 from square? Y/N");
-	    String input6 = scanner.nextLine();
-	    char c6 = input6.charAt(0);
-	    if(c6 == 'Y'){
-	    	square.Remove(t);
-	    }else
-	    	return;
+	  
 	    
+	    square.Accept(worker);
 	    System.out.print("Can we accept worker1 from square? Y/N");
 	    String input7 = scanner.nextLine();
 	    char c7 = input7.charAt(0);
 	    if(c7 == 'Y'){
-	    	square.Accept(t);
+	    	square.Accept(worker);
 	    }else
 	    	return;
 	    
+	    square.Accept(box);
 	    System.out.print("Can we accept box1 from square? Y/N");
 	    String input8 = scanner.nextLine();
 	    char c8 = input8.charAt(0);
 	    if(c8 == 'Y'){
-	    	square.Accept(t);
+	    	square.Accept(box);
 	    }else
 	    	return;
 	    
-	    System.out.print("Can we accept worker2 from square? Y/N");
+	    square.Accept(box);
+	    System.out.print("Can we accept box2 from square? Y/N");
 	    String input9 = scanner.nextLine();
 	    char c9 = input9.charAt(0);
 	    if(c9 == 'Y'){
-	    	square.Accept(t);
+	    	square.Accept(box);
 	    }else
 	    	return;
 
