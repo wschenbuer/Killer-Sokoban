@@ -19,7 +19,7 @@ public class MAIN {
 		Hole hole = new Hole();
 		Switch switch1 = new Switch();
 		Square square = new Square();
-		
+		Direction d = null ;
 		
 		
 		Scanner inp = new Scanner(System.in);
