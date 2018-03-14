@@ -1,6 +1,6 @@
 package KillerSokoban;
 
-public class Box {
+public class Box extends Obstacle implements Steppable  {
 	public void HitBy(Worker w){}
 	
 	public void HitBy(Box b){}
