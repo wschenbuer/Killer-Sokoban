@@ -27,7 +27,7 @@ public class MAIN {
             System.out.println("Make a choice (1-11)");
             choice = inp.nextInt();
             switch(choice){
-                case 1: WorkerPushBox();
+                case 1: 
                         
                 case 2: 
                     
