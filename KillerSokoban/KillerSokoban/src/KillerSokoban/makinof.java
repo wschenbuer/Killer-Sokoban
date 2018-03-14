@@ -22,9 +22,39 @@ public class makinof {
     }
     
     System.out.print("Does square 2 has a neighbor? Y/N");
-    String input = scanner.nextLine();
+    String input1 = scanner.nextLine();
     if(input == 'Y' || 'y' ){
     s2.GetNeighbor(d);
+    }
+    
+    System.out.print("Does square 3 has a neighbor? Y/N");
+    String input2 = scanner.nextLine();
+    if(input == 'Y' || 'y' ){
+    s3.GetNeighbor(d);
+    }
+    
+    System.out.print("Can we remove worker1 from square? Y/N");
+    String input3 = scanner.nextLine();
+    if(input == 'Y' || 'y' ){
+    s1.Remove(w1);
+    }
+    
+    System.out.print("Can we remove box from square? Y/N");
+    String input4 = scanner.nextLine();
+    if(input == 'Y' || 'y' ){
+    s2.Remove(b1);
+    }
+    
+    System.out.print("Can we remove worker2 from square? Y/N");
+    String input5 = scanner.nextLine();
+    if(input == 'Y' || 'y' ){
+    s3.Remove(w2);
+    }
+    
+    System.out.print("Can we remove worker2 from square? Y/N");
+    String input6 = scanner.nextLine();
+    if(input == 'Y' || 'y' ){
+    s3.Remove(w2);
     }
     
     scanner.close();
