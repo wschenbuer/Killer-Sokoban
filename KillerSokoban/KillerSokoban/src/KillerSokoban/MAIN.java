@@ -6,6 +6,8 @@ public class MAIN {
 
 	/*Functions here*/
 	
+	
+	
 	public static void main(String[] args) {
 		
 		
@@ -16,6 +18,9 @@ public class MAIN {
 		Obstacle obstacle = new Obstacle();
 		Hole hole = new Hole();
 		Switch switch1 = new Switch();
+		Square square = new Square();
+		
+		
 		
 		Scanner inp = new Scanner(System.in);
         int choice = 0;
