@@ -1,20 +1,24 @@
 package KillerSokoban;
 
 public class Square {
-	public void Accept(Worker w){}
+	public void Accept(Worker w){
+		 System.out.println("[:Square].accept(w)");
+	}
 	
-	public void Remove(Worker w){}
+	public void Remove(Worker w){
+		 System.out.println("[:Square].remove(w)");
+	}
 	
 	public boolean GetObstacle (Square s){
-		return false;}
-	
-
-	
-
+		return false;
+	}
+		
 	public Square GetNeighbor(Direction d){
-		return null;}
-
+		 System.out.println("[:Square].Getneighbor(d)");
+		return null;
+	}
 	
-	public void SetNeighbor(Direction d, Square s){}
+	public void SetNeighbor(Direction d, Square s) {
+	}
 	
 }
