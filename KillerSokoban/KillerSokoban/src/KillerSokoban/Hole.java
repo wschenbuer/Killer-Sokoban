@@ -1,6 +1,6 @@
 package KillerSokoban;
 
-public class Hole {
+public class Hole extends Thing {
 	
 	private boolean SwitchedOn;
 	
