@@ -5,7 +5,8 @@ public class Square {
 	
 	public void Remove(Worker w){}
 	
-	public boolean GetObstacle (Square s){}
+	public boolean GetObstacle (Square s){
+		return false;}
 	
 	public Square GetNeighbor(Direction d){}
 	
