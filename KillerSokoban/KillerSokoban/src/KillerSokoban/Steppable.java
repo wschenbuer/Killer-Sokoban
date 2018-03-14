@@ -1,5 +1,8 @@
 package KillerSokoban;
 
 public interface Steppable {
-	public void Step();
+	
+	public void Step(Direction d);
+
+	
 }

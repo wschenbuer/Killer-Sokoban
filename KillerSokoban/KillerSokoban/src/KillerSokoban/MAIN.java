@@ -4,11 +4,20 @@ import java.util.Scanner;
 
 public class MAIN {
 
-	
+	/*Functions here*/
 	
 	public static void main(String[] args) {
+		
+		
+		Worker worker = new Worker();
+		Box box = new Box();
+		Floor floor = new Floor();
+		Game game = new Game();
+		
+		
 		Scanner inp = new Scanner(System.in);
         int choice = 0;
+       
         do {
             
             
@@ -18,7 +27,7 @@ public class MAIN {
             System.out.println("Make a choice (1-11)");
             choice = inp.nextInt();
             switch(choice){
-                case 1:
+                case 1: WorkerPushBox();
                         
                 case 2: 
                     
