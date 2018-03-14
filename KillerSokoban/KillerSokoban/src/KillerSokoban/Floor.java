@@ -16,7 +16,9 @@ public class Floor implements Steppable
 	
 	public void Eliminate(Box b){}
 
+	
 	public void Step() {
+		// TODO Auto-generated method stub
 		
 	};
 }
