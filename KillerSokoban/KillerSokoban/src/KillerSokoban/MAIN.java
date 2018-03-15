@@ -27,23 +27,20 @@ public class MAIN {
         
         
         do {
-            
-            
-            System.out.println("****");
+       
            
             System.out.println("********************************");
             System.out.println("Make a choice (1-11), Enter 12 to exit!");
             choice = inp.nextInt();
             switch(choice){
-                case 1: CaseFunctions.WorkerPushBox(worker, square, box, d, thing);break;
+                case 1:CaseFunctions.WorkerPushBox(worker, square, box, d, thing);break;
                         
-                case 2: CaseFunctions.BoxPushBox1(worker, box, square, thing, d);break;
+                case 2:CaseFunctions.BoxPushWorker(worker, box, square, thing, d);break;
                     
                 case 3:CaseFunctions.BoxPushBox(worker, box, square, d);break;
                     
                 case 4:CaseFunctions.workerDiesBySandwich(worker,box,square,d,obstacle,game);break;
-                        
-                        
+             
                 case 5:CaseFunctions.WorkerDiesbyHole(hole,worker,game); break;
                 	
                 case 6:CaseFunctions.HoleAppear(switch1, hole, box);break;
@@ -56,7 +53,7 @@ public class MAIN {
                 	
                 case 10:CaseFunctions.WorkerMove(square, worker,d,thing);break;
                 	
-                case 11: CaseFunctions.boxDisappear(worker,box,floor,game,obstacle,
+                case 11:CaseFunctions.boxDisappear(worker,box,floor,game,obstacle,
            			 hole,switch1, square, d); break;
                         
                 case 12: break;

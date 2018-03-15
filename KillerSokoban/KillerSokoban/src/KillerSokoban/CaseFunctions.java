@@ -74,12 +74,12 @@ public class CaseFunctions {
 		
 		
 	}
-	public static void BoxPushBox1(Worker worker, Box box, Square square,
+	public static void BoxPushWorker(Worker worker, Box box, Square square,
 			 Thing t, Direction d) {	
 		
 		worker.Move(d);
-		worker.HitBy(worker);
-		worker.HitBy(worker);
+		box.HitBy(worker);
+		worker.HitBy(box);
 		square.GetNeighbor(d);
 		
 		Scanner scanner = new Scanner(System.in);
@@ -126,12 +126,12 @@ public class CaseFunctions {
 	    }else
 	    	return;
 	    
-	    square.Remove(box);
-	    System.out.print("Can we remove box2 from square? Y/N");
+	    square.Remove(worker);
+	    System.out.print("Can we remove worker2 from square? Y/N");
 	    String input5 = scanner.nextLine();
 	    char c5 = input5.charAt(0);
 	    if(c5 == 'Y'){
-	    	square.Remove(box);
+	    	square.Remove(worker);
 	    }else
 	    	return;
 	    
@@ -155,12 +155,12 @@ public class CaseFunctions {
 	    }else
 	    	return;
 	    
-	    square.Accept(box);
-	    System.out.print("Can we accept box2 from square? Y/N");
+	    square.Accept(worker);
+	    System.out.print("Can we accept worker from square? Y/N");
 	    String input9 = scanner.nextLine();
 	    char c9 = input9.charAt(0);
 	    if(c9 == 'Y'){
-	    	square.Accept(box);
+	    	square.Accept(worker);
 	    }else
 	    	return;
 
