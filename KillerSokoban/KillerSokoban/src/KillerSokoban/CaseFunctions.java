@@ -423,10 +423,90 @@ public class CaseFunctions {
 		if(answer=='Y'){square.Remove(worker);;}
 		else return;
 		
-		
-		
-		
 	}
-	
+	public static void BoxPushBox(Worker w, Box b, Square square,Direction d) {
+		Scanner inp = new Scanner(System.in);
+		String choice;
+		w.Move(d);
+		b.HitBy(w);
+		b.HitBy(b);
+		square.GetNeighbor(d);
+		System.out.println("Does square 1 has a neighbor? Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			square.GetNeighbor(d);
+			square.GetNeighbor(d);
+		} 
+		System.out.println("Does square 2 has a neighbor? Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			square.GetNeighbor(d);
+			square.GetNeighbor(d);
+		}
+		System.out.println("Does square 3 has a neighbor? Y/N");
+		choice = inp.next();
+			if (choice.compareTo("Y")==0) {
+				square.GetNeighbor(d);
+				square.Remove(w);
+			}
+		System.out.println("Can we remove worker1 from square?Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			square.Remove(w);
+			square.Remove(b);
+		}
+		System.out.println("Can we remove box1 from square?Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			square.Remove(w);
+			square.Remove(b);
+		}
+		System.out.println("Can we remove box2 from square?Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			square.Remove(w);
+			square.Remove(b);
+		}
+		System.out.println("Can we accept worker1 from square?Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			square.Accept(w);
+			square.Accept(b);
+		}
+		System.out.println("Can we accept box1 from square?Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			square.Accept(w);
+			square.Accept(b);
+		}
+		System.out.println("Can we accept box2 from square?Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			square.Accept(w);
+			square.Accept(b);
+		}
+	}
+	public static void HoleAppear(Switch switch1,Hole hole,Box b ) {
+		Scanner inp = new Scanner(System.in);
+		String choice;
+		System.out.println("Can I change the switch off to on? Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			switch1.HitBy(b);
+			hole.SwitchedOn();
+		} 
+				
+	}
+	public static void HoleDisappear(Switch switch1,Hole hole,Box b ) {
+		Scanner inp = new Scanner(System.in);
+		String choice;
+		System.out.println("Can I change the switch on to off? Y/N");
+		choice = inp.next();
+		if (choice.compareTo("Y")==0) {
+			switch1.HitBy(b);
+			hole.SwitchedOFF();
+		} 
+				
+	}
 	
 }

@@ -39,16 +39,16 @@ public class MAIN {
                         
                 case 2: CaseFunctions.BoxPushBox1(worker, box, square, thing, d);break;
                     
-                case 3:/*Duc*/
+                case 3:CaseFunctions.BoxPushBox(worker, box, square, d);break;
                     
                 case 4:CaseFunctions.workerDiesBySandwich(worker,box,square,d,obstacle,game);break;
                         
                         
                 case 5:CaseFunctions.WorkerDiesbyHole(hole,worker,game); break;
                 	
-                case 6:/*Duc*/
+                case 6:CaseFunctions.HoleAppear(switch1, hole, box);break;
                 	
-                case 7:/*Duc*/
+                case 7:CaseFunctions.HoleDisappear(switch1, hole, box);break;
                 	
                 case 8:CaseFunctions.SwitchOn(box,worker,switch1,d,square, hole);break;
                 	
