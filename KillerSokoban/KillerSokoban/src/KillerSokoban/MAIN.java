@@ -1,54 +1,75 @@
 package KillerSokoban;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-
 
 public class MAIN {
 
 
 	
 	public static void main(String[] args) {
-		ArrayList<Square> floor = new ArrayList<Square>();
 		
-		Floor.CreateFloor(floor);
-		
-		System.out.println("Add things now:\n");
-		System.out.println("Avaliable things: Worker,Box,Hole,Switch,Pillar\n");
-		System.out.println("The syntax is object objectid squareid\n");
-		
-		String userInput;
-		Scanner scan = new Scanner(System.in);
-		userInput = scan.nextLine();
-		
-		while(!userInput.equals("start"))
-		{
-			
-			
-		String[] Input = userInput.split(" ");
-		userInput = Input[0];
-		String thingId = Input[1];
-		String squareID = Input[2];
-		int thingidInt = Integer.parseInt(thingId);
-		int squareIDInt = Integer.parseInt(squareID);
-		int index = squareIDInt -1;
-		if(floor.get(index).IsOccupied==false)
-		{
-			
-			
-			if(userInput.equals("Worker"))
-			{
-				
-			}
-			
-		}else{ System.out.println("Occupied square!");}
+		Thing thing = new Thing();
+		Worker worker = new Worker();
+		Box box = new Box();
+		Floor floor = new Floor();
+		Game game = new Game();
+		Obstacle obstacle = new Obstacle();
+		Hole hole = new Hole();
+		Switch switch1 = new Switch();
+		Square square = new Square();
+		Direction d = null ;
 		
 		
+		Scanner inp = new Scanner(System.in);
+	
+        int choice = 0;
+       
+        
+        
+        do {
+       
+           
+            System.out.println("********************************");
+            System.out.println("Make a choice (1-11), Enter 12 to exit!");
+            choice = inp.nextInt();
+            switch(choice){
+                case 1:CaseFunctions.WorkerPushBox(worker, square, box, d, thing);break;
+                        
+                case 2:CaseFunctions.BoxPushWorker(worker, box, square, thing, d);break;
+                    
+                case 3:CaseFunctions.BoxPushBox(worker, box, square, d);break;
+                    
+                case 4:CaseFunctions.workerDiesBySandwich(worker,box,square,d,obstacle,game);break;
+             
+                case 5:CaseFunctions.WorkerDiesbyHole(hole,worker,game); break;
+                	
+                case 6:CaseFunctions.HoleAppear(switch1, hole, box);break;
+                	
+                case 7:CaseFunctions.HoleDisappear(switch1, hole, box);break;
+                	
+                case 8:CaseFunctions.SwitchOn(box,worker,switch1,d,square, hole);break;
+                	
+                case 9:CaseFunctions.SwitchOff(box, worker,switch1, d,square, hole);break;
+                	
+                case 10:CaseFunctions.WorkerMove(square, worker,d,thing);break;
+                	
+                case 11:CaseFunctions.boxDisappear(worker,box,floor,game,obstacle,
+           			 hole,switch1, square, d); break;
+                        
+                case 12: break;
+            
+            
+            }
+                    
+            
+	
+        } while (choice  !=  12);
+        
+        
+	}
 		
-		
-		userInput = scan.nextLine();
-		}
+	
 	}
 
 	
-}
+
