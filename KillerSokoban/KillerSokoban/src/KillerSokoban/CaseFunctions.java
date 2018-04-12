@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class CaseFunctions {
 
 
-	/*Each of below functions will be called uniquely according to user command*/
+	
 	public static void WorkerPushBox(Worker worker, Square square,Box box,Direction d,Thing t)
 	{
 		
