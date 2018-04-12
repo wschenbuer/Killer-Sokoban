@@ -2,11 +2,11 @@ package KillerSokoban;
 
 public class Square {
 	public void Accept(Thing t){
-		 System.out.println("[:Square].accept(t)");
+		
 	}
 	
 	public void Remove(Thing t){
-		 System.out.println("[:Square].remove(t)");
+		
 	}
 	
 	public boolean GetObstacle (Square s){
@@ -14,7 +14,7 @@ public class Square {
 	}
 		
 	public Square GetNeighbor(Direction d){
-		 System.out.println("[:Square].Getneighbor(d)");
+		
 		return null;
 	}
 	
