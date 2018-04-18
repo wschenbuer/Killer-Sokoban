@@ -1,6 +1,6 @@
 package KillerSokoban;
 
-public class Obstacle extends Thing {
+public abstract class Obstacle extends Thing {
 	
 	public void HitBy(Box b) {
 		

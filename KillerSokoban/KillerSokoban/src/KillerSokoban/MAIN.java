@@ -32,10 +32,15 @@ public class MAIN {
 		ArrayList<Integer> PillarId = new ArrayList<Integer>();
 		Floor.CreateFloor(floor);
 		
+		ArrayList<Worker> workerlist = new ArrayList<Worker>();
+		ArrayList<Box> boxlist = new ArrayList<Box>();
+		
+		
+		
 		System.out.println("Add things now:\n");
 		System.out.println("Avaliable things: Worker,Box,Hole,Switch,Pillar\n");
 		System.out.println("The syntax is object objectid squareid\n");
-		
+		System.out.println("enter start to start game\n");
 		String userInput;
 		Scanner scan = new Scanner(System.in);
 		userInput = scan.nextLine();
@@ -59,8 +64,18 @@ public class MAIN {
 		{	
 			int thingId = Integer.parseInt(Input[1]);
 			int squareID = Integer.parseInt(Input[2]);
+			int workerid = 0,boxid = 0,switchid = 0,holeid = 0,pillarid = 0;
 			
-		if(!WorkerId.contains(thingId)&&thingId>=0)
+			if(userInput.equals("worker")){workerid=thingId;}
+			if(userInput.equals("box")){boxid=thingId;}
+			if(userInput.equals("pillar")){pillarid=thingId;}
+			if(userInput.equals("hole")){holeid=thingId;}
+			if(userInput.equals("switch")){switchid=thingId;}
+			
+		if(!WorkerId.contains(workerid)&&thingId>=0&&!BoxId.contains(boxid)
+				&&!SwitchId.contains(switchid)&&!HoleId.contains(holeid)&&!PillarId.contains(pillarid))
+			
+			
 		{
 			
 			if(floor.get(squareID-1).IsOccupied==false)
@@ -70,35 +85,21 @@ public class MAIN {
 				Worker worker = new Worker(thingId);
 				worker.setsquareid(squareID);
 				WorkerId.add(thingId);// add this ID to the worker ID list				
-				
+				workerlist.add(worker);
 				floor.get(squareID-1).SetObjectOnSquare(worker);
+			
 				
 				
 			}else if(userInput.equals("box"))
 			{
 				Box box = new Box(thingId);
-				
+				boxlist.add(box);
 				box.setsquareid(squareID);
 				BoxId.add(thingId);// add this ID to the box ID list				
 				
 				floor.get(squareID-1).SetObjectOnSquare(box);
 				
 
-				System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
-				System.out.println(floor.get(14).getOccupieThingOnSquareWithString());
-				box.Step(Direction.UP);
-				System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
-				System.out.println(floor.get(14).getOccupieThingOnSquareWithString());
-				//System.out.println(floor.get(0).getOccupieThingOnSquareWithString());
-				//System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
-
-				//System.out.println(floor.get(8).getid());
-				//System.out.println("-----------------------------------");
-				//box.Step(Direction.UP);
-				//box.Step(Direction.LEFT);
-				//box.Step(Direction.DOWN);
-				//System.out.println(floor.get(24).getOccupieThingOnSquareWithString());
-				
 				
 			}else if(userInput.equals("hole"))
 			{
@@ -130,11 +131,64 @@ public class MAIN {
 		
 		}else{System.out.println("please insert integer format!");}
 		
-		
+		System.out.println("--------------------------");
 		userInput = scan.nextLine();
 			
 		}
+		System.out.println("Game started!!");
+		Game game = new Game();
 		
+		while(game.IsStart)
+		{
+			System.out.println("Make actions:");
+			System.out.println("Syntax: Worker workerid direction \n");
+			
+			String userInput1;
+			Scanner scanner = new Scanner(System.in);
+			userInput1 = scanner.nextLine();
+			userInput1 = userInput1.toLowerCase();
+			String[] Input1 = userInput1.split(" ");
+			
+			String firstelement = Input1[0];
+			
+			int workerid= Integer.parseInt(Input1[1]);
+			
+			String direction = Input1[2].toLowerCase();
+			Direction d = null;
+			if(direction.equals("up"))
+			{
+				d=Direction.UP;
+			}else if(direction.equals("down"))
+					{
+				d=Direction.DOWN;
+					}
+			else if(direction.equals("left"))
+			{
+					d=Direction.LEFT;
+			}
+			else if(direction.equals("right"))
+			{
+					d=Direction.RIGHT;
+			}
+			
+			
+			for(int i=0;i<workerlist.size();i++)
+			{
+			if(workerlist.get(i).getworkerid()==workerid)
+			{
+				workerlist.get(i).Move(d);
+			}
+			}
+			
+			
+			
+			System.out.println("Do you want to continue playing?YES/NO");
+			String answer = scanner.nextLine().toUpperCase();
+			if(answer.equals("NO"))
+			{
+				game.IsStart=false;
+			}
+		}
 		
 	}
 

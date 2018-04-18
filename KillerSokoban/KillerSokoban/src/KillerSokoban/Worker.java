@@ -11,6 +11,9 @@ public class Worker extends Thing {
 	
 static ArrayList<Square> floor = Floor.getSquare();
 
+public int getworkerid()
+{return this.id;}
+
 public void setsquareid(int squareid)
 {
 	this.squareid=squareid;
@@ -54,37 +57,54 @@ public void Die()
 }
 	
 	public void HitBy(Box b){
-		int BoxSquareID = b.getsquareid();
 		
-		if (BoxSquareID==this.squareid-1)  //Box is on the left 
+		int boxsquareID = b.getsquareid();
+		if(boxsquareID==this.squareid-1)//box is on your left side
 		{
-			if (floor.get(this.squareid+1).IsOccupied==false) {
-				this.squareid= this.squareid+1;			
-				b.setsquareid(BoxSquareID+1);
-
-		} else if ( BoxSquareID==this.squareid+1) //right
-		{
-			if (floor.get(this.squareid-1).IsOccupied==false) {
-				this.squareid= this.squareid-1;			
-				b.setsquareid(BoxSquareID-1);				
+			System.out.println("Collision occured, there is a box on your left");
+			//current square this.squareid-1
+			if(floor.get(this.squareid-1+1).IsOccupied==false)
+			{
+			floor.get(this.squareid-1).Remove();
+			floor.get(this.squareid-1-1).Remove();
+			floor.get(this.squareid-1+1).SetObjectOnSquare(this);
+			floor.get(this.squareid-1).SetObjectOnSquare(b);
 			}
 			
-		} else if (BoxSquareID==this.squareid+6)
+		}else if(boxsquareID==this.squareid+1)//worker is on your right side
 		{
-			if (floor.get(this.squareid-6).IsOccupied==false) {
-				this.squareid= this.squareid-6;			
-				b.setsquareid(BoxSquareID-6);
+			System.out.println("Collision occured, there is a box on your right");
+			if(floor.get(this.squareid-1-1).IsOccupied==false)
+			{
+			floor.get(this.squareid-1).Remove();
+			floor.get(this.squareid-1+1).Remove();
+			floor.get(this.squareid-1-1).SetObjectOnSquare(this);
+			floor.get(this.squareid-1).SetObjectOnSquare(b);
 			}
 			
-		} else if (BoxSquareID==this.squareid-6) 
+		}else if(boxsquareID==this.squareid+6)//worker is below you
 		{
-			if (floor.get(this.squareid+6).IsOccupied==false) {
-				this.squareid= this.squareid+6;			
-				b.setsquareid(BoxSquareID+6);
+			System.out.println("Collision occured, there is a box on your bottom");
+			if(floor.get(this.squareid-1-6).IsOccupied==false)
+			{
+			floor.get(this.squareid-1).Remove();
+			floor.get(this.squareid-1+6).Remove();
+			floor.get(this.squareid-1-6).SetObjectOnSquare(this);
+			floor.get(this.squareid-1).SetObjectOnSquare(b);
+			}
+		}else if(boxsquareID==this.squareid-6)//worker is above you
+		{
+			System.out.println("Collision occured, there is a box on your top");
+			if(floor.get(this.squareid-1+6).IsOccupied==false)
+			{
+			floor.get(this.squareid-1).Remove();
+			floor.get(this.squareid-1-6).Remove();
+			floor.get(this.squareid-1+6).SetObjectOnSquare(this);
+			floor.get(this.squareid-1).SetObjectOnSquare(b);
 			}
 		}
-		
-	}
+
+	
 }
 	
 	public void HitBy(Worker w){
