@@ -3,7 +3,15 @@ package KillerSokoban;
 public class Worker extends Thing {
 	
 	private int id;
+	private int squareid;
 	
+	public void setsquareid(int squareid)
+	{
+		this.squareid=squareid;
+	}
+	public int getsquareid()
+	{return this.squareid;
+	}
 	public void Move(Direction d){
 		
 		

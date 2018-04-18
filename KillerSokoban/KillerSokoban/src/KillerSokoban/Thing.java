@@ -1,7 +1,7 @@
 package KillerSokoban;
 
 public class Thing {
-
+	
 
 	public void HitBy(Worker w){}
 	

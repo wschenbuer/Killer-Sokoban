@@ -10,7 +10,10 @@ public class Square {
 	private int id;
 	public boolean IsOccupied;
 	private String OccupiedThing;
-	private Thing object;
+	private Thing object=null;
+	public int getid()
+	{return this.id;}
+	
 	
 	Square(int x, int y, int id)
 	{
@@ -33,21 +36,25 @@ public class Square {
 	{
 		return this.OccupiedThing;
 	}
-	public void SetOccupied(String OccupiedThing) {
-		this.OccupiedThing=OccupiedThing;
-	}
+	
 	public void SetObjectOnSquare(Thing object)
 	{
+		this.IsOccupied=true;
 		this.object=object;
+		this.OccupiedThing=object.getClass().getSimpleName().toLowerCase();
 	}
+	
 	
 	
 	public void Accept(Thing t){
 		
 	}
 	
-	public void Remove(Thing t){
+	public void Remove(){
 		
+		if(this.object!=null){return;}
+	
+		this.object=null;
 	}
 	
 	

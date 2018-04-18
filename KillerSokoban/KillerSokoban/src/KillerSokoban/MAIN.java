@@ -20,6 +20,10 @@ public class MAIN {
 	public static void main(String[] args) {
 		
 		ArrayList<Square> floor = new ArrayList<Square>();
+	
+
+		
+		
 		floor = Floor.getSquare();
 		ArrayList<Integer> WorkerId = new ArrayList<Integer>();
 		ArrayList<Integer> BoxId = new ArrayList<Integer>();
@@ -64,38 +68,51 @@ public class MAIN {
 			if(userInput.equals("worker"))
 			{
 				Worker worker = new Worker(thingId);
-				WorkerId.add(thingId);// add this ID to the worker ID list
-				floor.get(squareID-1).IsOccupied=true;
-				floor.get(squareID-1).SetOccupied("worker");
+				worker.setsquareid(squareID);
+				WorkerId.add(thingId);// add this ID to the worker ID list				
+				
 				floor.get(squareID-1).SetObjectOnSquare(worker);
+				
 				
 			}else if(userInput.equals("box"))
 			{
 				Box box = new Box(thingId);
-				BoxId.add(thingId);// add this ID to the box ID list
-				floor.get(squareID-1).IsOccupied=true;
-				floor.get(squareID-1).SetOccupied("box");
+				box.setmap(floor);
+				box.setsquareid(squareID);
+				BoxId.add(thingId);// add this ID to the box ID list				
+				
 				floor.get(squareID-1).SetObjectOnSquare(box);
+				
+				/*System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
+				System.out.println(floor.get(8).getid());
+				System.out.println("-----------------------------------");
+				box.Step(Direction.UP);
+				box.Step(Direction.LEFT);
+				box.Step(Direction.DOWN);
+				System.out.println(floor.get(24).getOccupieThingOnSquareWithString());
+				*/
+				
 			}else if(userInput.equals("hole"))
 			{
 				Hole hole = new Hole(thingId);
-				HoleId.add(thingId);// add this ID to the box ID list
-				floor.get(squareID-1).IsOccupied=true;
-				floor.get(squareID-1).SetOccupied("hole");
+				hole.setsquareid(squareID);
+				HoleId.add(thingId);// add this ID to the box ID list				
+				
 				floor.get(squareID-1).SetObjectOnSquare(hole);
 			}else if(userInput.equals("switch"))
 			{
 				Switch switches = new Switch(thingId);
-				SwitchId.add(thingId);// add this ID to the box ID list
-				floor.get(squareID-1).IsOccupied=true;
-				floor.get(squareID-1).SetOccupied("switch");
+				switches.setsquareid(squareID);
+				SwitchId.add(thingId);// add this ID to the box ID list				
+				
 				floor.get(squareID-1).SetObjectOnSquare(switches);
 			}else if(userInput.equals("pillar"))
 			{
 				Pillar pillar = new Pillar(thingId);
+				pillar.setsquareid(squareID);
 				PillarId.add(thingId);// add this ID to the box ID list
-				floor.get(squareID-1).IsOccupied=true;
-				floor.get(squareID-1).SetOccupied("pillar");
+				
+				
 				floor.get(squareID-1).SetObjectOnSquare(pillar);
 			}
 			
