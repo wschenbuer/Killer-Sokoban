@@ -22,7 +22,7 @@ public class MAIN {
 		ArrayList<Square> floor = new ArrayList<Square>();
 		floor = Floor.getSquare();
 		ArrayList<Integer> WorkerId = new ArrayList<Integer>();
-		
+		ArrayList<Integer> BoxId = new ArrayList<Integer>();
 		
 		Floor.CreateFloor(floor);
 		
@@ -61,12 +61,21 @@ public class MAIN {
 			{
 			if(userInput.equals("worker"))
 			{
+				Worker worker = new Worker(thingId);
 				WorkerId.add(thingId);// add this ID to the worker ID list
 				floor.get(squareID-1).IsOccupied=true;
 				floor.get(squareID-1).SetOccupied("worker");
-				floor.get(squareID-1).SetObjectOnSquare(new Worker(thingId));
+				floor.get(squareID-1).SetObjectOnSquare(worker);
 				
+			}else if(userInput.equals("box"))
+			{
+				Box box = new Box(thingId);
+				BoxId.add(thingId);// add this ID to the box ID list
+				floor.get(squareID-1).IsOccupied=true;
+				floor.get(squareID-1).SetOccupied("box");
+				floor.get(squareID-1).SetObjectOnSquare(box);
 			}
+			
 			}else{System.out.println("Occupied square! Failed to create");}
 			
 		}else{ System.out.println("The input ID is invalid, please choose another ID!");}

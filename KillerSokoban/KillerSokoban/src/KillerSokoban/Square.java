@@ -18,7 +18,10 @@ public class Square {
 		this.y=y;
 		this.id = id;
 	}
-	
+	public int getX()
+	{return this.x;}
+	public int getY()
+	{return this.y;}
 	
 	public Thing getObjectOnSquare()
 	{
@@ -47,9 +50,7 @@ public class Square {
 		
 	}
 	
-	public boolean GetObstacle (Square s){
-		return false;
-	}
+	
 		
 	public Square GetNeighbor(Direction d){
 		

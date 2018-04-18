@@ -46,9 +46,8 @@ public class Floor implements Steppable
 	static public void CreateFloor(ArrayList<Square> floor)
 	{
 	
-	System.out.println("Enter the size of map!\n");
-	Scanner scan = new Scanner(System.in);
-	int size = scan.nextInt();
+	System.out.println("Building map");
+	int size = 6; // map size 15*15
 	
 	
     int squareid = 1;
