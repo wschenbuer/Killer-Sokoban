@@ -2,7 +2,6 @@ package KillerSokoban;
 
 public class Hole extends Thing {
 	
-	private boolean SwitchedOn;
 	private int id;
 	private int squareid;
 	
@@ -10,22 +9,29 @@ public class Hole extends Thing {
 	{
 		this.squareid=squareid;
 	}
+	
 	public int getsquareid()
-	{return this.squareid;
+	{
+		return this.squareid;
 	}
+	
 	Hole(int id)
 	{
 		this.id=id;
 	}
-	public void HitBy(Box b){
+	
+	public void HitBy(Box b)
+	{
 		
 	}
 	
-	public void HitBy(Worker w){
+	public void HitBy(Worker w)
+	{
 	
 	}
 	
-	public void SwitchedOn(){
+	public void SwitchedOn()
+	{
 	
 	}
 	
