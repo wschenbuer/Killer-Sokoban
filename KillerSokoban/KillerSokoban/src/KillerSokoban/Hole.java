@@ -35,7 +35,7 @@ public class Hole extends Thing {
 	public void HitBy(Worker w)
 	{
 		if(this.holeAppear == true)
-			floor.get(w.GetSquare().getid()- 1).Remove();
+			floor.get(w.getsquareid()- 1).Remove();
 		else
 			return;
 	}
