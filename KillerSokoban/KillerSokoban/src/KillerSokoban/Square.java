@@ -10,6 +10,7 @@ public class Square {
 	private int id;
 	public boolean IsOccupied;
 	private String OccupiedThing;
+	private Thing object;
 	
 	Square(int x, int y, int id)
 	{
@@ -17,6 +18,11 @@ public class Square {
 		this.y=y;
 		this.id = id;
 	}
+	
+	public void SetOccupied(String OccupiedThing) {
+		this.OccupiedThing=OccupiedThing;
+	}
+	
 	
 	public void Accept(Thing t){
 		
