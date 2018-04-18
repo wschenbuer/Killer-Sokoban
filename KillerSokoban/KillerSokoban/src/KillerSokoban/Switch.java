@@ -13,7 +13,6 @@ public class Switch extends Thing {
 	
 	
 	public int getsquareid()
-	
 	{
 		return this.squareid;
 	}
