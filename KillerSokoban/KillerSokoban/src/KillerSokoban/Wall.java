@@ -1,6 +1,6 @@
 package KillerSokoban;
 
-public class Wall {
+public class Wall extends Obstacle {
 
 	private int id;
 	private int squareId;

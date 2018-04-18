@@ -83,7 +83,12 @@ public class MAIN {
 				
 				floor.get(squareID-1).SetObjectOnSquare(box);
 				
+<<<<<<< HEAD
 				System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
+=======
+				//System.out.println(floor.get(0).getOccupieThingOnSquareWithString());
+				/*System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
+>>>>>>> 746eb25423189c597f6ca703be0b8698edf59640
 				System.out.println(floor.get(8).getid());
 				System.out.println("-----------------------------------");
 				box.Step(Direction.UP);
