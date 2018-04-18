@@ -29,16 +29,31 @@ public class Box extends Obstacle implements Steppable  {
 		int WorkerSquareID = w.getsquareid();
 		if(WorkerSquareID==this.squareid-1)//worker is on your left side
 		{
+			//current square this.squareid-1
+			floor.get(this.squareid-1).Remove();
+			floor.get(this.squareid-1-1).Remove();
+			floor.get(this.squareid-1+1).SetObjectOnSquare(this);
+			floor.get(this.squareid-1).SetObjectOnSquare(w);
 			
-			
-		}else if(WorkerSquareID==this.squareid+1)//worker is on you right side
+		}else if(WorkerSquareID==this.squareid+1)//worker is on your right side
 		{
+			floor.get(this.squareid-1).Remove();
+			floor.get(this.squareid-1+1).Remove();
+			floor.get(this.squareid-1-1).SetObjectOnSquare(this);
+			floor.get(this.squareid-1).SetObjectOnSquare(w);
 			
 		}else if(WorkerSquareID==this.squareid+6)//worker is below you
 		{
-			
+			floor.get(this.squareid-1).Remove();
+			floor.get(this.squareid-1+6).Remove();
+			floor.get(this.squareid-1-6).SetObjectOnSquare(this);
+			floor.get(this.squareid-1).SetObjectOnSquare(w);
 		}else if(WorkerSquareID==this.squareid-6)//worker is above you
 		{
+			floor.get(this.squareid-1).Remove();
+			floor.get(this.squareid-1-6).Remove();
+			floor.get(this.squareid-1+6).SetObjectOnSquare(this);
+			floor.get(this.squareid-1).SetObjectOnSquare(w);
 			
 		}
 	}
@@ -61,16 +76,16 @@ public class Box extends Obstacle implements Steppable  {
 		
 		switch(d)
 		{
-			case UP:    floor.get(this.squareid).Remove();
+			case UP:    floor.get(this.squareid-1).Remove();
 					    floor.get(this.squareid-6-1).SetObjectOnSquare(this); break;
 			
-			case LEFT:  floor.get(this.squareid).Remove();
+			case LEFT:  floor.get(this.squareid-1).Remove();
 						floor.get(this.squareid-1-1).SetObjectOnSquare(this); break;
 			
-			case DOWN:  floor.get(this.squareid).Remove();
+			case DOWN:  floor.get(this.squareid-1).Remove();
 						floor.get(this.squareid+6-1).SetObjectOnSquare(this); break;
 			
-			case RIGHT:  floor.get(this.squareid).Remove();
+			case RIGHT:  floor.get(this.squareid-1).Remove();
 						 floor.get(this.squareid+1-1).SetObjectOnSquare(this); break;
 					
 			

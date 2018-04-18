@@ -85,9 +85,10 @@ public class MAIN {
 				
 
 				System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
+				System.out.println(floor.get(14).getOccupieThingOnSquareWithString());
 				box.Step(Direction.UP);
 				System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
-
+				System.out.println(floor.get(14).getOccupieThingOnSquareWithString());
 				//System.out.println(floor.get(0).getOccupieThingOnSquareWithString());
 				//System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
 

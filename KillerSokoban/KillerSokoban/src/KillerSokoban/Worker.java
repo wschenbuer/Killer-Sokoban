@@ -86,11 +86,11 @@ public void Die()
 }
 	
 	public void HitBy(Worker w){
-		//DO NOTHING
+		//do nothing
 	}
 	
 	public void CollideWith(Obstacle o)
 	{
-		
+		// do nothing
 	}
 }
