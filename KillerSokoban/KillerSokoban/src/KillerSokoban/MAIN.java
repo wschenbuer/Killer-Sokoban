@@ -77,14 +77,16 @@ public class MAIN {
 			}else if(userInput.equals("box"))
 			{
 				Box box = new Box(thingId);
-				box.setmap(floor);
+				
 				box.setsquareid(squareID);
 				BoxId.add(thingId);// add this ID to the box ID list				
 				
 				floor.get(squareID-1).SetObjectOnSquare(box);
 				
 
-				//System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
+				System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
+				box.Step(Direction.UP);
+				System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
 
 				//System.out.println(floor.get(0).getOccupieThingOnSquareWithString());
 				//System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
