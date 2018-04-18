@@ -83,14 +83,14 @@ public class MAIN {
 				
 				floor.get(squareID-1).SetObjectOnSquare(box);
 				
-				/*System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
+				System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
 				System.out.println(floor.get(8).getid());
 				System.out.println("-----------------------------------");
 				box.Step(Direction.UP);
 				box.Step(Direction.LEFT);
 				box.Step(Direction.DOWN);
 				System.out.println(floor.get(24).getOccupieThingOnSquareWithString());
-				*/
+				
 				
 			}else if(userInput.equals("hole"))
 			{
