@@ -23,7 +23,9 @@ public class MAIN {
 		floor = Floor.getSquare();
 		ArrayList<Integer> WorkerId = new ArrayList<Integer>();
 		ArrayList<Integer> BoxId = new ArrayList<Integer>();
-		
+		ArrayList<Integer> HoleId = new ArrayList<Integer>();
+		ArrayList<Integer> SwitchId = new ArrayList<Integer>();
+		ArrayList<Integer> PillarId = new ArrayList<Integer>();
 		Floor.CreateFloor(floor);
 		
 		System.out.println("Add things now:\n");
@@ -74,6 +76,27 @@ public class MAIN {
 				floor.get(squareID-1).IsOccupied=true;
 				floor.get(squareID-1).SetOccupied("box");
 				floor.get(squareID-1).SetObjectOnSquare(box);
+			}else if(userInput.equals("hole"))
+			{
+				Hole hole = new Hole(thingId);
+				HoleId.add(thingId);// add this ID to the box ID list
+				floor.get(squareID-1).IsOccupied=true;
+				floor.get(squareID-1).SetOccupied("hole");
+				floor.get(squareID-1).SetObjectOnSquare(hole);
+			}else if(userInput.equals("switch"))
+			{
+				Switch switches = new Switch(thingId);
+				SwitchId.add(thingId);// add this ID to the box ID list
+				floor.get(squareID-1).IsOccupied=true;
+				floor.get(squareID-1).SetOccupied("switch");
+				floor.get(squareID-1).SetObjectOnSquare(switches);
+			}else if(userInput.equals("pillar"))
+			{
+				Pillar pillar = new Pillar(thingId);
+				PillarId.add(thingId);// add this ID to the box ID list
+				floor.get(squareID-1).IsOccupied=true;
+				floor.get(squareID-1).SetOccupied("pillar");
+				floor.get(squareID-1).SetObjectOnSquare(pillar);
 			}
 			
 			}else{System.out.println("Occupied square! Failed to create");}
