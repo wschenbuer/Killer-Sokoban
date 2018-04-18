@@ -10,7 +10,7 @@ public class Square {
 	private int id;
 	public boolean IsOccupied;
 	private String OccupiedThing;
-	
+	private Thing object;
 	Square(int x, int y, int id)
 	{
 		this.x=x;
