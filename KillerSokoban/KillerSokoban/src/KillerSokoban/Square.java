@@ -22,6 +22,10 @@ public class Square {
 	public void SetOccupied(String OccupiedThing) {
 		this.OccupiedThing=OccupiedThing;
 	}
+	public void SetObjectOnSquare(Thing object)
+	{
+		this.object=object;
+	}
 	
 	
 	public void Accept(Thing t){
