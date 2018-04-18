@@ -10,7 +10,9 @@ public class Worker extends Thing {
 	}
 	
 	Worker(int id)
-	{this.id=id;}
+	{
+		this.id=id;
+	}
 	
 	public void Die(){
 		

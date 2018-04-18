@@ -61,7 +61,10 @@ public class MAIN {
 			{
 			if(userInput.equals("worker"))
 			{
-				WorkerId.add(thingId);
+				WorkerId.add(thingId);// add this ID to the worker ID list
+				floor.get(squareID-1).IsOccupied=true;
+				floor.get(squareID-1).SetOccupied("worker");
+				floor.get(squareID-1).SetObjectOnSquare(new Worker(thingId));
 				
 				
 			}
