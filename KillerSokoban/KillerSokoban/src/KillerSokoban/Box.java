@@ -72,6 +72,7 @@ public class Box extends Obstacle implements Steppable  {
 	public void HitBy(Box b)
 	{
 		
+		
 	}
 	
 	public Square GetSquare(){
