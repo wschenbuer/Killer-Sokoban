@@ -83,6 +83,7 @@ public class MAIN {
 				
 				floor.get(squareID-1).SetObjectOnSquare(box);
 				
+				//System.out.println(floor.get(0).getOccupieThingOnSquareWithString());
 				/*System.out.println(floor.get(8).getOccupieThingOnSquareWithString());
 				System.out.println(floor.get(8).getid());
 				System.out.println("-----------------------------------");
