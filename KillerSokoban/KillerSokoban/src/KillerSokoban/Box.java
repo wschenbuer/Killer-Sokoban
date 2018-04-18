@@ -30,31 +30,42 @@ public class Box extends Obstacle implements Steppable  {
 		if(WorkerSquareID==this.squareid-1)//worker is on your left side
 		{
 			//current square this.squareid-1
+			if(floor.get(this.squareid-1+1).IsOccupied==false)
+			{
 			floor.get(this.squareid-1).Remove();
 			floor.get(this.squareid-1-1).Remove();
 			floor.get(this.squareid-1+1).SetObjectOnSquare(this);
 			floor.get(this.squareid-1).SetObjectOnSquare(w);
+			}
 			
 		}else if(WorkerSquareID==this.squareid+1)//worker is on your right side
 		{
+			if(floor.get(this.squareid-1-1).IsOccupied==false)
+			{
 			floor.get(this.squareid-1).Remove();
 			floor.get(this.squareid-1+1).Remove();
 			floor.get(this.squareid-1-1).SetObjectOnSquare(this);
 			floor.get(this.squareid-1).SetObjectOnSquare(w);
+			}
 			
 		}else if(WorkerSquareID==this.squareid+6)//worker is below you
 		{
+			if(floor.get(this.squareid-1-6).IsOccupied==false)
+			{
 			floor.get(this.squareid-1).Remove();
 			floor.get(this.squareid-1+6).Remove();
 			floor.get(this.squareid-1-6).SetObjectOnSquare(this);
 			floor.get(this.squareid-1).SetObjectOnSquare(w);
+			}
 		}else if(WorkerSquareID==this.squareid-6)//worker is above you
 		{
+			if(floor.get(this.squareid-1+6).IsOccupied==false)
+			{
 			floor.get(this.squareid-1).Remove();
 			floor.get(this.squareid-1-6).Remove();
 			floor.get(this.squareid-1+6).SetObjectOnSquare(this);
 			floor.get(this.squareid-1).SetObjectOnSquare(w);
-			
+			}
 		}
 	}
 	
