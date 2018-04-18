@@ -13,7 +13,6 @@ public class Switch extends Thing {
 	
 	
 	public int getsquareid()
-	
 	{
 		return this.squareid;
 	}
@@ -23,13 +22,15 @@ public class Switch extends Thing {
 		this.id=id;
 	}
 	
-	public void HitBy(Box b)
+	public void HitBy(Box b, Hole h)
 	{
 		SwitchedOn = true;
+		h.HoleAppear();
 	}
 	
-	public void HitBy(Worker w)
+	public void HitBy(Worker w, Hole h)
 	{
 		SwitchedOn = false;
+		h.HoleDisappear();
 	}
 }
