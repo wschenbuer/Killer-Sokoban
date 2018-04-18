@@ -1,10 +1,10 @@
 package KillerSokoban;
 
-
+import java.util.ArrayList;
 
 public class Square {
-	
-	
+
+
 	private int x;
 	private int y;
 	private int id;
@@ -13,8 +13,8 @@ public class Square {
 	private Thing object=null;
 	public int getid()
 	{return this.id;}
-	
-	
+	static ArrayList<Square> floor = Floor.getSquare();//new ArrayList<Square>();
+
 	Square(int x, int y, int id)
 	{
 		this.x=x;
@@ -25,46 +25,54 @@ public class Square {
 	{return this.x;}
 	public int getY()
 	{return this.y;}
-	
+
 	public Thing getObjectOnSquare()
 	{
-		return object;
-		
+		return this.object;
 	}
-	
+
 	public String getOccupieThingOnSquareWithString()
 	{
 		return this.OccupiedThing;
 	}
-	
+
+	//Method renamed from Accept to setobject on square
 	public void SetObjectOnSquare(Thing object)
 	{
-		this.IsOccupied=true;
-		this.object=object;
-		this.OccupiedThing=object.getClass().getSimpleName().toLowerCase();
+		if (this.object == null) {
+			this.IsOccupied=true;
+			this.object=object;
+			this.OccupiedThing=object.getClass().getSimpleName().toLowerCase();
+		} else {
+			System.out.println("There is an object in this square already.");
+		}
 	}
-	
-	
-	
-	public void Accept(Thing t){
-		
-	}
-	
+
 	public void Remove(){
-		
-		if(this.object!=null){return;}
-	
-		this.object=null;
+		if(this.object!=null){
+			this.object=null;
+			this.OccupiedThing=null;
+			this.IsOccupied=false;
+			}
 	}
-	
-	
-		
+
+
+
 	public Square GetNeighbor(Direction d){
-		
+		switch(d) {
+		case UP:
+			return floor.get(this.id-6-1);
+
+		case LEFT:
+			return floor.get(this.id-1-1);
+
+		case RIGHT:
+			return floor.get(this.id+1-1);
+
+		case DOWN:
+			return floor.get(this.id+6-1);
+		}
 		return null;
 	}
-	
-	public void SetNeighbor(Direction d, Square s) {
-	}
-	
+
 }
