@@ -1,5 +1,7 @@
 package KillerSokoban;
 
+
+
 public class Square {
 	
 	
@@ -7,6 +9,8 @@ public class Square {
 	private int y;
 	private int id;
 	public boolean IsOccupied;
+	private String OccupiedThing;
+	
 	Square(int x, int y, int id)
 	{
 		this.x=x;
