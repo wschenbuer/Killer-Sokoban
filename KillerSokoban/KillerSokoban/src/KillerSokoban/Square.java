@@ -19,6 +19,17 @@ public class Square {
 		this.id = id;
 	}
 	
+	
+	public Thing getObjectOnSquare()
+	{
+		return object;
+		
+	}
+	
+	public String getOccupieThingOnSquareWithString()
+	{
+		return this.OccupiedThing;
+	}
 	public void SetOccupied(String OccupiedThing) {
 		this.OccupiedThing=OccupiedThing;
 	}

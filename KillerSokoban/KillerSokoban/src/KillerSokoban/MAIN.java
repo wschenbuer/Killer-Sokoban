@@ -33,7 +33,7 @@ public class MAIN {
 		String userInput;
 		Scanner scan = new Scanner(System.in);
 		userInput = scan.nextLine();
-		userInput.toLowerCase();
+		userInput=userInput.toLowerCase();
 		
 		while(!userInput.equals("start"))
 		{
@@ -65,7 +65,6 @@ public class MAIN {
 				floor.get(squareID-1).IsOccupied=true;
 				floor.get(squareID-1).SetOccupied("worker");
 				floor.get(squareID-1).SetObjectOnSquare(new Worker(thingId));
-				
 				
 			}
 			}else{System.out.println("Occupied square! Failed to create");}
