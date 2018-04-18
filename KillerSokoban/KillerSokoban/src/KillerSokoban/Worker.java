@@ -2,6 +2,8 @@ package KillerSokoban;
 
 public class Worker extends Thing {
 	
+	private int id;
+	
 	public void Move(Direction d){
 		
 		
