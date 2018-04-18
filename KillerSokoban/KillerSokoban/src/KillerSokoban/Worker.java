@@ -15,15 +15,13 @@ public void setsquareid(int squareid)
 {
 	this.squareid=squareid;
 }
-	
 public int getsquareid()
-{
-	return this.squareid;
+{return this.squareid;
 }
-	
 Worker(int id)
 {
 	this.id=id;
+	
 }
 	
 public void Move(Direction d)
@@ -31,15 +29,19 @@ public void Move(Direction d)
 	switch(d)
 		{
 			case UP:    floor.get(this.squareid).Remove();
+						this.setsquareid(getsquareid()-6-1);
 					    floor.get(this.squareid-6-1).SetObjectOnSquare(this); break;
 			
 			case LEFT:  floor.get(this.squareid).Remove();
+						this.setsquareid(getsquareid()-1-1);
 						floor.get(this.squareid-1-1).SetObjectOnSquare(this); break;
 			
 			case DOWN:  floor.get(this.squareid).Remove();
+						this.setsquareid(getsquareid()+6-1);
 						floor.get(this.squareid+6-1).SetObjectOnSquare(this); break;
 			
 			case RIGHT:  floor.get(this.squareid).Remove();
+						 this.setsquareid(getsquareid()+1-1);
 						 floor.get(this.squareid+1-1).SetObjectOnSquare(this); break;
 			
 		}	
@@ -86,11 +88,11 @@ public void Die()
 }
 	
 	public void HitBy(Worker w){
-		//do nothing
+		//DO NOTHING
 	}
 	
 	public void CollideWith(Obstacle o)
 	{
-		// do nothing
+		
 	}
 }
