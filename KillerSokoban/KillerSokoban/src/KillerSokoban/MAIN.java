@@ -20,9 +20,7 @@ public class MAIN {
 	public static void main(String[] args) {
 		
 		ArrayList<Square> floor = new ArrayList<Square>();
-	
 
-		
 		
 		floor = Floor.getSquare();
 		ArrayList<Integer> WorkerId = new ArrayList<Integer>();
@@ -99,7 +97,13 @@ public class MAIN {
 				
 				floor.get(squareID-1).SetObjectOnSquare(box);
 				
-
+				/*for(int i = 0; i<workerlist.size();i++)
+				{
+					if(workerlist.get(i).getsquareid()==box.getsquareid()-1)
+					{
+						box.HitBy(workerlist.get(i));
+					}
+				}*/
 				
 			}else if(userInput.equals("hole"))
 			{
@@ -131,11 +135,14 @@ public class MAIN {
 		
 		}else{System.out.println("please insert integer format!");}
 		
-		System.out.println("--------------------------");
+		System.out.println("--------------------------Enter start to start game" );
 		userInput = scan.nextLine();
 			
 		}
 		System.out.println("Game started!!");
+		
+		
+		
 		Game game = new Game();
 		
 		while(game.IsStart)
