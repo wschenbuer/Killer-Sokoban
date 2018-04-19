@@ -28,10 +28,12 @@ public class MAIN {
 		ArrayList<Integer> HoleId = new ArrayList<Integer>();
 		ArrayList<Integer> SwitchId = new ArrayList<Integer>();
 		ArrayList<Integer> PillarId = new ArrayList<Integer>();
+		
 		Floor.CreateFloor(floor);
 		
 		ArrayList<Worker> workerlist = new ArrayList<Worker>();
 		ArrayList<Box> boxlist = new ArrayList<Box>();
+		
 		
 		
 		
@@ -97,13 +99,7 @@ public class MAIN {
 				
 				floor.get(squareID-1).SetObjectOnSquare(box);
 				
-				/*for(int i = 0; i<workerlist.size();i++)
-				{
-					if(workerlist.get(i).getsquareid()==box.getsquareid()-1)
-					{
-						box.HitBy(workerlist.get(i));
-					}
-				}*/
+				
 				
 			}else if(userInput.equals("hole"))
 			{
@@ -135,7 +131,7 @@ public class MAIN {
 		
 		}else{System.out.println("please insert integer format!");}
 		
-		System.out.println("--Keep adding objects, or enter 'start' to start game--" );
+		System.out.println("--Keep adding objects, or enter 'start' to start game--	" );
 		userInput = scan.nextLine();
 			
 		}
@@ -144,11 +140,12 @@ public class MAIN {
 		
 		
 		Game game = new Game();
-		
+		System.out.println("Make actions:");
+		System.out.println("Syntax: Worker workerid direction ");
+		System.out.println("Enter 'end' to stop game");
 		while(game.IsStart)
 		{
-			System.out.println("Make actions:");
-			System.out.println("Syntax: Worker workerid direction \n");
+		
 			
 			String userInput1;
 			Scanner scanner = new Scanner(System.in);
@@ -177,27 +174,451 @@ public class MAIN {
 			{
 					d=Direction.RIGHT;
 			}
-			
-			
-			for(int i=0;i<workerlist.size();i++)
+			Worker mainWorker = new Worker(100);
+			WorkerId.add(100);
+			int currentworkersquareid = 0;
+			int workerindex=0;
+			for(int i=0;i<workerlist.size();i++,workerindex++)
 			{
 			if(workerlist.get(i).getworkerid()==workerid)
+				{currentworkersquareid=workerlist.get(i).getsquareid();
+					mainWorker=workerlist.get(i);
+				}
+			
+			}
+			
+			
+			String neighborname,neighbor2name,neighbor3name;
+			Square neighbor,neighbor2,neighbor3;
+			
+			Box box;
+			Box box1;Worker worker;
+			Worker worker1;
+			switch(d)
 			{
-				workerlist.get(i).Move(d);
-			}
-			}
-			
-			
-			
-			System.out.println("Do you want to continue playing?YES/NO");
-			String answer = scanner.nextLine().toUpperCase();
-			if(answer.equals("NO"))
+			case UP:
+
+				
+				
+				if(currentworkersquareid>=8&&currentworkersquareid<=11)
+				{
+				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.UP);
+				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.UP);
+				
+				
+				//do nothing
+				
+				
+				}
+				
+				if(currentworkersquareid>=14&&currentworkersquareid<=17)
+				{
+				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.UP);
+				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.UP);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.UP);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				
+				
+				
+				if(!neighborname.equals("box")&&!neighborname.equals("pillar")&&!neighborname.equals("worker"))
+				{
+					
+					System.out.println("Worker moved up");
+					mainWorker.Move(Direction.UP);
+					
+					if(neighborname.equals("hole"))
+					{
+						mainWorker.Die();
+						System.out.println("Worker died by falling into hole");
+					}
+					currentworkersquareid-=6;
+				}else
+				{
+					System.out.println("Can not move, obstacle infront!");
+				}
+				
+				}
+				
+				
+				if(currentworkersquareid>=20&&currentworkersquareid<=23)
+				{
+				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.UP);
+				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.UP);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.UP);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				neighbor3=neighbor2.GetNeighbor(Direction.UP);
+				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
+				
+				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
+				{
+					
+				box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+				box.HitBy(mainWorker);
+				System.out.println("Box pushed up by worker");
+				mainWorker.Move(Direction.UP);
+				currentworkersquareid-=6;
+				
+				}else if(neighborname.equals("box")&&(neighbor2name.equals("box")||(neighbor2name.equals("pillar"))))
+				{
+					System.out.println("box box/box pilar infront, can not move!");
+				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
+				{
+					neighbor.Remove();
+					System.out.println("box falled into hole");
+					mainWorker.Move(Direction.UP);
+					currentworkersquareid-=6;
+				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
+				{
+					neighbor2.Remove();
+					System.out.println("you killed a worker by sandwitch with wall and box");
+				
+				}else if(neighborname.equals("worker")||neighborname.equals("pillar"))
+				{
+					System.out.println("you stopped by a object infront of you");
+				}else if(neighbor3name.equals("nothing"))
+				{
+					mainWorker.Move(Direction.UP);
+					currentworkersquareid-=6;
+				}
+				
+				
+				
+				
+				}
+				
+				
+				if(currentworkersquareid>=26&&currentworkersquareid<=29)
+				{
+				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.UP);
+				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.UP);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.UP);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				neighbor3=neighbor2.GetNeighbor(Direction.UP);
+				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
+				
+				
+				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
+				{
+					
+				box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+				box.HitBy(mainWorker);
+				System.out.println("Box pushed up by worker");
+				currentworkersquareid-=6;
+				}else if(neighborname.equals("box")&&(neighbor2name.equals("pillar")))
+				{
+					System.out.println("pillar infront, can not move!");
+				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
+				{
+					neighbor.Remove();
+					System.out.println("box falled into hole");
+					mainWorker.Move(Direction.UP);
+					currentworkersquareid-=6;
+				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
+				{
+					if(neighbor3name.equals("box")||neighbor3name.equals("pillar"))
+					{
+						neighbor2.Remove();
+						System.out.println("you killed a worker by sandwitch with wall and box");
+						
+					}
+					if(neighbor3name.equals("hole"))
+					{
+						neighbor3.Remove();
+						System.out.println("you killed a worker by pushing it to hole");
+						mainWorker.Move(Direction.UP);
+						currentworkersquareid-=6;
+					}
+					if(neighbor3name.equals("worker"))
+					{
+						System.out.println("can not move, stopped by 2 workers");
+					}
+					
+					if(neighbor3name.equals("nothing"))
+					{
+						neighbor.Remove();
+						neighbor2.Remove();
+						box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+						worker=(Worker)floor.get(currentworkersquareid-1-12).getthissquare().getObjectOnSquare();
+						box.HitBy(mainWorker);
+						worker.HitBy(box);
+						System.out.println("worker pushed by box");
+						
+					}
+				
+				}else if(neighborname.equals("box")&&neighbor2name.equals("box"))
+				{
+					if(neighbor3name.equals("nothing"))
+					{
+						box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(currentworkersquareid-1-12).getthissquare().getObjectOnSquare();
+						
+						box.HitBy(mainWorker);
+						box1.HitBy(box1);
+						System.out.println("pushed 2 boxes");
+						mainWorker.Move(Direction.UP);
+						currentworkersquareid-=6;
+					}
+					if(neighbor3name.equals("hole"))
+					{
+						box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+						neighbor3.Remove();
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.UP);
+						currentworkersquareid-=6;
+						System.out.println("One box falled into hole, another box pushed");
+						
+					}
+					if((neighbor3name.equals("pillar")||(neighbor3name.equals("box"))))
+					{
+						System.out.println("Do nothing, can not move");
+					}
+					if((neighbor3name.equals("worker")))
+					{
+						neighbor3.Remove();
+						
+						box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(currentworkersquareid-1-12).getthissquare().getObjectOnSquare();
+						
+						System.out.println("Sandwitched another worker");
+						
+						
+					}
+					
+				}else if(neighborname.equals("nothing"))
+				{
+					mainWorker.Move(Direction.UP);
+					currentworkersquareid-=6;
+				}
+				
+}
+				
+				
+				break;
+				
+			case DOWN: 
+				
+				if(currentworkersquareid>=26&&currentworkersquareid<=29)
+				{
+				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.DOWN);
+				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.DOWN);
+				
+				
+				//do nothing
+				
+				
+				}
+				
+				if(currentworkersquareid>=20&&currentworkersquareid<=23)
+				{
+				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.DOWN);
+				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.DOWN);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				
+				
+				
+				if(!neighborname.equals("box")&&!neighborname.equals("pillar")&&!neighborname.equals("worker"))
+				{
+					
+					System.out.println("Worker moved up");
+					mainWorker.Move(Direction.DOWN);
+					
+					if(neighborname.equals("hole"))
+					{
+						mainWorker.Die();
+						System.out.println("Worker died by falling into hole");
+					}
+					currentworkersquareid+=6;
+				}else
+				{
+					System.out.println("Can not move, obstacle infront!");
+				}
+				
+				}
+				
+				
+				if(currentworkersquareid>=14&&currentworkersquareid<=17)
+				{
+				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.DOWN);
+				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.DOWN);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				neighbor3=neighbor2.GetNeighbor(Direction.DOWN);
+				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
+				
+				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
+				{
+					
+				box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+				box.HitBy(mainWorker);
+				System.out.println("Box pushed up by worker");
+				mainWorker.Move(Direction.DOWN);
+				currentworkersquareid+=6;
+				
+				}else if(neighborname.equals("box")&&(neighbor2name.equals("box")||(neighbor2name.equals("pillar"))))
+				{
+					System.out.println("box box/box pilar infront, can not move!");
+				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
+				{
+					neighbor.Remove();
+					System.out.println("box falled into hole");
+					mainWorker.Move(Direction.DOWN);
+					currentworkersquareid+=6;
+				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
+				{
+					neighbor2.Remove();
+					System.out.println("you killed a worker by sandwitch with wall and box");
+				
+				}else if(neighborname.equals("worker")||neighborname.equals("pillar"))
+				{
+					System.out.println("you stopped by a object infront of you");
+				}else if(neighborname.equals("nothing"))
+				{
+					mainWorker.Move(Direction.DOWN);
+					currentworkersquareid+=6;
+				}
+				
+				
+				
+				
+				}
+				
+				
+				if(currentworkersquareid>=8&&currentworkersquareid<=11)
+				{
+				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.DOWN);
+				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.DOWN);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				neighbor3=neighbor2.GetNeighbor(Direction.DOWN);
+				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
+				
+				
+				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
+				{
+					
+				box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+				box.HitBy(mainWorker);
+				System.out.println("Box pushed up by worker");
+				currentworkersquareid+=6;
+				}else if(neighborname.equals("box")&&(neighbor2name.equals("pillar")))
+				{
+					System.out.println("pillar infront, can not move!");
+				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
+				{
+					neighbor.Remove();
+					System.out.println("box falled into hole");
+					mainWorker.Move(Direction.DOWN);
+					currentworkersquareid+=6;
+				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
+				{
+					
+					if(neighbor3name.equals("box")||neighbor3name.equals("pillar"))
+					{
+						neighbor2.Remove();
+						System.out.println("you killed a worker by sandwitch with wall and box");
+						
+					}
+					if(neighbor3name.equals("hole"))
+					{
+						neighbor3.Remove();
+						System.out.println("you killed a worker by pushing it to hole");
+						mainWorker.Move(Direction.DOWN);
+						currentworkersquareid+=6;
+					}
+					if(neighbor3name.equals("worker"))
+					{
+						System.out.println("can not move, stopped by 2 workers");
+					}
+					if(neighbor3name.equals("nothing"))
+					{
+						neighbor.Remove();
+						neighbor2.Remove();
+						box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+						worker=(Worker)floor.get(currentworkersquareid-1+12).getthissquare().getObjectOnSquare();
+						box.HitBy(mainWorker);
+						worker.HitBy(box);
+						System.out.println("worker pushed by box");
+						
+					}
+					
+				}else if(neighborname.equals("box")&&neighbor2name.equals("box"))
+				{
+					if(neighbor3name.equals("nothing"))
+					{
+						box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(currentworkersquareid-1+12).getthissquare().getObjectOnSquare();
+						
+						box.HitBy(mainWorker);
+						box1.HitBy(box1);
+						System.out.println("pushed 2 boxes");
+						mainWorker.Move(Direction.DOWN);
+						currentworkersquareid+=6;
+					}
+					if(neighbor3name.equals("hole"))
+					{
+						box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+						neighbor3.Remove();
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.DOWN);
+						currentworkersquareid+=6;
+						System.out.println("One box falled into hole, another box pushed");
+						
+					}
+					if((neighbor3name.equals("pillar")||(neighbor3name.equals("box"))))
+					{
+						System.out.println("Do nothing, can not move");
+					}
+					if((neighbor3name.equals("worker")))
+					{
+						neighbor3.Remove();
+						
+						box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(currentworkersquareid-1+12).getthissquare().getObjectOnSquare();
+						
+						System.out.println("Sandwitched another worker");
+						
+						
+					}
+					
+				}else if(neighborname.equals("nothing"))
+				{
+					mainWorker.Move(Direction.DOWN);
+					currentworkersquareid+=6;
+				}
+				
+}
+				
+				
+				
+				break;
+				
+			}	
+		
+			if(firstelement.equals("end"))
 			{
 				game.IsStart=false;
 			}
+			
+			
+				
+			
 		}
 		
 	}
+}
+
 
 	
-}

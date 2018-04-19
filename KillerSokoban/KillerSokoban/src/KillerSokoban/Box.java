@@ -28,7 +28,7 @@ public class Box extends Obstacle implements Steppable  {
 	{
 		
 		
-		System.out.println("Box pushed by worker");
+		
 		int WorkerSquareID = w.getsquareid();
 		if(WorkerSquareID==this.squareid-1)//worker is on your left side
 		{
@@ -74,6 +74,7 @@ public class Box extends Obstacle implements Steppable  {
 	
 	public void HitBy(Box b)
 	{
+		
 		int boxsquareID = b.getsquareid();
 		if(boxsquareID==this.squareid-1)//worker is on your left side
 		{

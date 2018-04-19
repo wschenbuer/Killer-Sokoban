@@ -17,29 +17,31 @@ public class Floor implements Steppable
 	
 	 public static void SetWall(int size)
 	{
-		// ArrayList<Wall> wall = new ArrayList<Wall>();
+		ArrayList<Wall> wall = new ArrayList<Wall>();
 		 int WallId=1;
 		 
 		 //Iterate through all squares
-		for(int i=1;i<=size*size;++i)
+		for(int i=1;i<=size*size;i++)
 		{
 			
 			//  top side      || left side || right side|| bottom side
 			if((i>=1&&i<=size)||(i%size==1)||(i%size==0)||(i>=(size*(size-1)+1)))
 			{
-				//wall.add(new Wall(WallId,i));//add walls into squares that has ID = i
+				Wall walls = new Wall(WallId,i);
+				wall.add(new Wall(WallId,i));//add walls into squares that has ID = i
 				System.out.println("Wall with ID"+ WallId +" has been created on Square with ID " + i);
 				
-				//array index starts with 0, i starts with 1, therefore i need to be decreased by 1 in order to access the right element
-				floor.get(i-1).IsOccupied=true;
-				floor.get(i-1).SetObjectOnSquare(new Wall(WallId,i));
+				
+				floor.get(i-1).SetObjectOnSquare(walls);
+				
+				
 				WallId++;//each time we place a new wall, the next wall should have the id = WallID++
 				
 			
 			}
 				
 		}
-		 
+		
 	}
 	
 	 
