@@ -36,9 +36,9 @@ public class MAIN {
 		
 		
 		System.out.println("Add things now:\n");
-		System.out.println("Avaliable things: Worker,Box,Hole,Switch,Pillar\n");
-		System.out.println("The syntax is object objectid squareid\n");
-		System.out.println("enter start to start game\n");
+		System.out.println("Avaliable things: Worker,Box,Hole,Switch,Pillar");
+		System.out.println("The syntax is object objectid squareid");
+		//System.out.println("enter start to start game\n");
 		String userInput;
 		Scanner scan = new Scanner(System.in);
 		userInput = scan.nextLine();
@@ -135,7 +135,7 @@ public class MAIN {
 		
 		}else{System.out.println("please insert integer format!");}
 		
-		System.out.println("--------------------------Enter start to start game" );
+		System.out.println("--Keep adding objects, or enter 'start' to start game--" );
 		userInput = scan.nextLine();
 			
 		}
