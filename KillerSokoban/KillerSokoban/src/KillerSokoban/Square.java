@@ -44,7 +44,7 @@ public class Square {
 		
 		
 		if (this.IsOccupied==false) {
-			System.out.println("You are now on Square ID: "+ this.id);
+			
 			this.IsOccupied=true;
 			this.object=object;
 			this.OccupiedThing=object.getClass().getSimpleName().toLowerCase();
@@ -64,10 +64,10 @@ public class Square {
 	{
 		switch(d) {
 		case UP:
-			return floor.get(this.id-6-1).getOccupieThingOnSquareWithString();
+			return floor.get(this.id-6-1).getthissquare().getOccupieThingOnSquareWithString();
 
 		case LEFT:
-			return floor.get(this.id-1-1).getOccupieThingOnSquareWithString();
+			return floor.get(this.id-1-1).getthissquare().getOccupieThingOnSquareWithString();
 
 		case RIGHT:
 			return floor.get(this.id+1-1).getthissquare().getOccupieThingOnSquareWithString();

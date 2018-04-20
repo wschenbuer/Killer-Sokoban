@@ -6,7 +6,7 @@ public class Hole extends Thing {
 	
 	private int id;
 	private int squareid;
-	private boolean holeAppear = false;
+	private boolean holeAppear = true;
 	static ArrayList<Square> floor = Floor.getSquare();
 	
 	public void setsquareid(int squareid)
@@ -27,7 +27,10 @@ public class Hole extends Thing {
 	public void HitBy(Box b)
 	{
 		if(this.holeAppear == true)
-			floor.get(b.GetSquare().getid() - 1).Remove();
+		{	floor.get(b.GetSquare().getid() - 1).Remove();
+		System.out.println("Elminated box");
+		}
+		
 		else
 			return;
 	}
@@ -35,7 +38,9 @@ public class Hole extends Thing {
 	public void HitBy(Worker w)
 	{
 		if(this.holeAppear == true)
-			floor.get(w.getsquareid()- 1).Remove();
+			{floor.get(w.getsquareid()- 1).Remove();
+			System.out.println("Elminated worker");
+			}
 		else
 			return;
 	}

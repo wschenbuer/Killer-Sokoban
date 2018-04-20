@@ -143,6 +143,8 @@ public class MAIN {
 		System.out.println("Make actions:");
 		System.out.println("Syntax: Worker workerid direction ");
 		System.out.println("Enter 'end' to stop game");
+		
+		
 		while(game.IsStart)
 		{
 		
@@ -176,12 +178,12 @@ public class MAIN {
 			}
 			Worker mainWorker = new Worker(100);
 			WorkerId.add(100);
-			int currentworkersquareid = 0;
+			//int currentworkersquareid = 0;
 			int workerindex=0;
 			for(int i=0;i<workerlist.size();i++,workerindex++)
 			{
 			if(workerlist.get(i).getworkerid()==workerid)
-				{currentworkersquareid=workerlist.get(i).getsquareid();
+				{//currentworkersquareid=workerlist.get(i).getsquareid();
 					mainWorker=workerlist.get(i);
 				}
 			
@@ -200,10 +202,10 @@ public class MAIN {
 
 				
 				
-				if(currentworkersquareid>=8&&currentworkersquareid<=11)
+				if(mainWorker.getsquareid()>=8&&mainWorker.getsquareid()<=11)
 				{
-				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.UP);
-				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.UP);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.UP);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.UP);
 				
 				
 				//do nothing
@@ -211,10 +213,10 @@ public class MAIN {
 				
 				}
 				
-				if(currentworkersquareid>=14&&currentworkersquareid<=17)
+				if(mainWorker.getsquareid()>=14&&mainWorker.getsquareid()<=17)
 				{
-				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.UP);
-				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.UP);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.UP);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.UP);
 				
 				neighbor2=neighbor.GetNeighbor(Direction.UP);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
@@ -233,7 +235,7 @@ public class MAIN {
 						mainWorker.Die();
 						System.out.println("Worker died by falling into hole");
 					}
-					currentworkersquareid-=6;
+					
 				}else
 				{
 					System.out.println("Can not move, obstacle infront!");
@@ -242,10 +244,11 @@ public class MAIN {
 				}
 				
 				
-				if(currentworkersquareid>=20&&currentworkersquareid<=23)
+				if(mainWorker.getsquareid()>=20&&mainWorker.getsquareid()<=23)
 				{
-				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.UP);
-				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.UP);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.UP);
+				
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.UP);
 				
 				neighbor2=neighbor.GetNeighbor(Direction.UP);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
@@ -256,33 +259,46 @@ public class MAIN {
 				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
 				{
 					
-				box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+				box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+				
 				box.HitBy(mainWorker);
-				System.out.println("Box pushed up by worker");
+				
 				mainWorker.Move(Direction.UP);
-				currentworkersquareid-=6;
+				
+				
 				
 				}else if(neighborname.equals("box")&&(neighbor2name.equals("box")||(neighbor2name.equals("pillar"))))
 				{
 					System.out.println("box box/box pilar infront, can not move!");
 				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
-				{
-					neighbor.Remove();
-					System.out.println("box falled into hole");
+				{		
+					box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-12).getthissquare().getObjectOnSquare();
+					
+					hole.HitBy(box);
+					
 					mainWorker.Move(Direction.UP);
-					currentworkersquareid-=6;
+					
 				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
 				{
-					neighbor2.Remove();
-					System.out.println("you killed a worker by sandwitch with wall and box");
+					//neighbor2.Remove();
+					
+					box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+					worker = (Worker) floor.get(mainWorker.getsquareid()-1-12).getthissquare().getObjectOnSquare();
+					
+					worker.HitBy(box);
+					
 				
 				}else if(neighborname.equals("worker")||neighborname.equals("pillar"))
 				{
-					System.out.println("you stopped by a object infront of you");
+					System.out.println("you stopped by an object infront of you!!!");
+					System.out.println("workerID:"+mainWorker.getsquareid());
+					
+					
 				}else if(neighbor3name.equals("nothing"))
 				{
 					mainWorker.Move(Direction.UP);
-					currentworkersquareid-=6;
+					mainWorker.setsquareid(mainWorker.getsquareid()-6);
 				}
 				
 				
@@ -291,10 +307,10 @@ public class MAIN {
 				}
 				
 				
-				if(currentworkersquareid>=26&&currentworkersquareid<=29)
+				if(mainWorker.getsquareid()>=26&&mainWorker.getsquareid()<=29)
 				{
-				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.UP);
-				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.UP);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.UP);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.UP);
 				
 				neighbor2=neighbor.GetNeighbor(Direction.UP);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
@@ -306,19 +322,16 @@ public class MAIN {
 				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
 				{
 					
-				box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+				box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
 				box.HitBy(mainWorker);
 				System.out.println("Box pushed up by worker");
-				currentworkersquareid-=6;
+				mainWorker.Move(Direction.UP);
+				System.out.println("workerid: "+mainWorker.getsquareid());
+				System.out.println("boxid: "+box.getsquareid());
+				
 				}else if(neighborname.equals("box")&&(neighbor2name.equals("pillar")))
 				{
 					System.out.println("pillar infront, can not move!");
-				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
-				{
-					neighbor.Remove();
-					System.out.println("box falled into hole");
-					mainWorker.Move(Direction.UP);
-					currentworkersquareid-=6;
 				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
 				{
 					if(neighbor3name.equals("box")||neighbor3name.equals("pillar"))
@@ -327,12 +340,16 @@ public class MAIN {
 						System.out.println("you killed a worker by sandwitch with wall and box");
 						
 					}
-					if(neighbor3name.equals("hole"))
+					if(neighbor3name.equals("hole"))//worker box worker hole
 					{
-						neighbor3.Remove();
-						System.out.println("you killed a worker by pushing it to hole");
+						box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+						Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-18).getthissquare().getObjectOnSquare();
+						worker = (Worker) floor.get(mainWorker.getsquareid()-1-12).getthissquare().getObjectOnSquare();
+						
+						hole.HitBy(worker);
+						box.HitBy(mainWorker);
 						mainWorker.Move(Direction.UP);
-						currentworkersquareid-=6;
+						
 					}
 					if(neighbor3name.equals("worker"))
 					{
@@ -343,8 +360,8 @@ public class MAIN {
 					{
 						neighbor.Remove();
 						neighbor2.Remove();
-						box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
-						worker=(Worker)floor.get(currentworkersquareid-1-12).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+						worker=(Worker)floor.get(mainWorker.getsquareid()-1-12).getthissquare().getObjectOnSquare();
 						box.HitBy(mainWorker);
 						worker.HitBy(box);
 						System.out.println("worker pushed by box");
@@ -355,22 +372,22 @@ public class MAIN {
 				{
 					if(neighbor3name.equals("nothing"))
 					{
-						box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
-						box1 = (Box) floor.get(currentworkersquareid-1-12).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1-12).getthissquare().getObjectOnSquare();
 						
 						box.HitBy(mainWorker);
 						box1.HitBy(box1);
 						System.out.println("pushed 2 boxes");
 						mainWorker.Move(Direction.UP);
-						currentworkersquareid-=6;
+						
 					}
 					if(neighbor3name.equals("hole"))
 					{
-						box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
 						neighbor3.Remove();
 						box.HitBy(mainWorker);
 						mainWorker.Move(Direction.UP);
-						currentworkersquareid-=6;
+						
 						System.out.println("One box falled into hole, another box pushed");
 						
 					}
@@ -382,8 +399,8 @@ public class MAIN {
 					{
 						neighbor3.Remove();
 						
-						box = (Box) floor.get(currentworkersquareid-1-6).getthissquare().getObjectOnSquare();
-						box1 = (Box) floor.get(currentworkersquareid-1-12).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1-12).getthissquare().getObjectOnSquare();
 						
 						System.out.println("Sandwitched another worker");
 						
@@ -393,7 +410,7 @@ public class MAIN {
 				}else if(neighborname.equals("nothing"))
 				{
 					mainWorker.Move(Direction.UP);
-					currentworkersquareid-=6;
+					
 				}
 				
 }
@@ -403,10 +420,10 @@ public class MAIN {
 				
 			case DOWN: 
 				
-				if(currentworkersquareid>=26&&currentworkersquareid<=29)
+				if(mainWorker.getsquareid()>=26&&mainWorker.getsquareid()<=29)
 				{
-				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
 				
 				
 				//do nothing
@@ -414,10 +431,10 @@ public class MAIN {
 				
 				}
 				
-				if(currentworkersquareid>=20&&currentworkersquareid<=23)
+				if(mainWorker.getsquareid()>=20&&mainWorker.getsquareid()<=23)
 				{
-				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
 				
 				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
@@ -436,7 +453,7 @@ public class MAIN {
 						mainWorker.Die();
 						System.out.println("Worker died by falling into hole");
 					}
-					currentworkersquareid+=6;
+					mainWorker.setsquareid(mainWorker.getsquareid()-6);
 				}else
 				{
 					System.out.println("Can not move, obstacle infront!");
@@ -445,10 +462,10 @@ public class MAIN {
 				}
 				
 				
-				if(currentworkersquareid>=14&&currentworkersquareid<=17)
+				if(mainWorker.getsquareid()>=14&&mainWorker.getsquareid()<=17)
 				{
-				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
 				
 				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
@@ -459,11 +476,12 @@ public class MAIN {
 				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
 				{
 					
-				box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+				box = (Box) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 				box.HitBy(mainWorker);
-				System.out.println("Box pushed up by worker");
+				System.out.println("Box pushed down by worker");
 				mainWorker.Move(Direction.DOWN);
-				currentworkersquareid+=6;
+				System.out.println("boxID:"+ box.getsquareid());
+				System.out.println("workerID:"+ mainWorker.getsquareid());
 				
 				}else if(neighborname.equals("box")&&(neighbor2name.equals("box")||(neighbor2name.equals("pillar"))))
 				{
@@ -471,9 +489,9 @@ public class MAIN {
 				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
 				{
 					neighbor.Remove();
-					System.out.println("box falled into hole");
+					System.out.println("box falled into hole !");
 					mainWorker.Move(Direction.DOWN);
-					currentworkersquareid+=6;
+					
 				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
 				{
 					neighbor2.Remove();
@@ -482,10 +500,12 @@ public class MAIN {
 				}else if(neighborname.equals("worker")||neighborname.equals("pillar"))
 				{
 					System.out.println("you stopped by a object infront of you");
+					System.out.println("workerID:"+mainWorker.getsquareid());
+					
 				}else if(neighborname.equals("nothing"))
 				{
 					mainWorker.Move(Direction.DOWN);
-					currentworkersquareid+=6;
+					
 				}
 				
 				
@@ -494,10 +514,10 @@ public class MAIN {
 				}
 				
 				
-				if(currentworkersquareid>=8&&currentworkersquareid<=11)
+				if(mainWorker.getsquareid()>=8&&mainWorker.getsquareid()<=11)
 				{
-				neighborname=floor.get(currentworkersquareid-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(currentworkersquareid-1).GetNeighbor(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
 				
 				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
@@ -509,19 +529,22 @@ public class MAIN {
 				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
 				{
 					
-				box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+				box = (Box) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 				box.HitBy(mainWorker);
-				System.out.println("Box pushed up by worker");
-				currentworkersquareid+=6;
+				mainWorker.Move(Direction.DOWN);
+				System.out.println("Box pushed down by worker1");
+				System.out.println("boxid:"+box.getsquareid());
+				System.out.println("workerid:"+mainWorker.getsquareid());
+			
 				}else if(neighborname.equals("box")&&(neighbor2name.equals("pillar")))
 				{
 					System.out.println("pillar infront, can not move!");
 				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
 				{
 					neighbor.Remove();
-					System.out.println("box falled into hole");
+					System.out.println("box falled into hole!!");
 					mainWorker.Move(Direction.DOWN);
-					currentworkersquareid+=6;
+					
 				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
 				{
 					
@@ -536,7 +559,7 @@ public class MAIN {
 						neighbor3.Remove();
 						System.out.println("you killed a worker by pushing it to hole");
 						mainWorker.Move(Direction.DOWN);
-						currentworkersquareid+=6;
+						
 					}
 					if(neighbor3name.equals("worker"))
 					{
@@ -546,8 +569,8 @@ public class MAIN {
 					{
 						neighbor.Remove();
 						neighbor2.Remove();
-						box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
-						worker=(Worker)floor.get(currentworkersquareid-1+12).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
+						worker=(Worker)floor.get(mainWorker.getsquareid()-1+12).getthissquare().getObjectOnSquare();
 						box.HitBy(mainWorker);
 						worker.HitBy(box);
 						System.out.println("worker pushed by box");
@@ -558,22 +581,22 @@ public class MAIN {
 				{
 					if(neighbor3name.equals("nothing"))
 					{
-						box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
-						box1 = (Box) floor.get(currentworkersquareid-1+12).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1+12).getthissquare().getObjectOnSquare();
 						
 						box.HitBy(mainWorker);
 						box1.HitBy(box1);
 						System.out.println("pushed 2 boxes");
 						mainWorker.Move(Direction.DOWN);
-						currentworkersquareid+=6;
+						
 					}
 					if(neighbor3name.equals("hole"))
 					{
-						box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 						neighbor3.Remove();
 						box.HitBy(mainWorker);
 						mainWorker.Move(Direction.DOWN);
-						currentworkersquareid+=6;
+						
 						System.out.println("One box falled into hole, another box pushed");
 						
 					}
@@ -585,8 +608,8 @@ public class MAIN {
 					{
 						neighbor3.Remove();
 						
-						box = (Box) floor.get(currentworkersquareid-1+6).getthissquare().getObjectOnSquare();
-						box1 = (Box) floor.get(currentworkersquareid-1+12).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1+12).getthissquare().getObjectOnSquare();
 						
 						System.out.println("Sandwitched another worker");
 						
@@ -596,7 +619,7 @@ public class MAIN {
 				}else if(neighborname.equals("nothing"))
 				{
 					mainWorker.Move(Direction.DOWN);
-					currentworkersquareid+=6;
+					
 				}
 				
 }
