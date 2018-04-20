@@ -43,13 +43,14 @@ public class Square {
 	{
 		
 		
-		if (this.IsOccupied==false) {
+		if (this.IsOccupied==false||this.getOccupieThingOnSquareWithString().equals("hole")) {
 			
 			this.IsOccupied=true;
 			this.object=object;
 			this.OccupiedThing=object.getClass().getSimpleName().toLowerCase();
 			
-		} else {
+		} else
+		{
 			System.out.println("There is an object in this square already.");
 			
 			

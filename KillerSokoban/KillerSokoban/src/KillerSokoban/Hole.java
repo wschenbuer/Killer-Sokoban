@@ -28,7 +28,7 @@ public class Hole extends Thing {
 	{
 		if(this.holeAppear == true)
 		{	floor.get(b.GetSquare().getid() - 1).Remove();
-		System.out.println("Elminated box");
+		System.out.println("Box with ID: "+ b.getboxid()+" Has been eliminated by hole");
 		}
 		
 		else
@@ -39,7 +39,7 @@ public class Hole extends Thing {
 	{
 		if(this.holeAppear == true)
 			{floor.get(w.getsquareid()- 1).Remove();
-			System.out.println("Elminated worker");
+			System.out.println("worker with ID: "+w.getworkerid()+ " has been eliminated by hole");
 			}
 		else
 			return;

@@ -33,19 +33,27 @@ public void Move(Direction d)
 		{
 			case UP:    floor.get(this.squareid-1).Remove();
 						this.setsquareid(getsquareid()-6);
-					    floor.get(this.squareid-1).SetObjectOnSquare(this); break;
+					    floor.get(this.squareid-1).SetObjectOnSquare(this);
+					    System.out.println("Worker with ID "+ this.id + " moved up"); break;
+					    
 			
 			case LEFT:  floor.get(this.squareid-1).Remove();
 						this.setsquareid(getsquareid()-1);
-						floor.get(this.squareid-1).SetObjectOnSquare(this); break;
+						floor.get(this.squareid-1).SetObjectOnSquare(this); 
+						System.out.println("Worker with ID "+ this.id + " moved left");
+						break;
 			
 			case DOWN:  floor.get(this.squareid-1).Remove();
 						this.setsquareid(getsquareid()+6);
-						floor.get(this.squareid-1).SetObjectOnSquare(this); break;
+						floor.get(this.squareid-1).SetObjectOnSquare(this); 
+						System.out.println("Worker with ID "+ this.id + " moved down");
+						break;
 			
 			case RIGHT:  floor.get(this.squareid-1).Remove();
 						 this.setsquareid(getsquareid()+1);
-						 floor.get(this.squareid-1).SetObjectOnSquare(this); break;
+						 floor.get(this.squareid-1).SetObjectOnSquare(this);
+						 System.out.println("Worker with ID "+ this.id + " moved right");
+						 break;
 			
 		}	
 }
@@ -59,12 +67,12 @@ public void Die()
 	
 	public void HitBy(Box b){
 		
-		System.out.println("Worker hitten by box");
+		
 		int boxsquareID = b.getsquareid();
 		
 		if(boxsquareID==this.squareid-1)//box is on your left side
 		{
-			System.out.println("Collision occured, there is a box on your left");
+			
 			//current square this.squareid-1
 			if(floor.get(this.squareid-1+1).IsOccupied==false||floor.get(this.squareid-1+1).getOccupieThingOnSquareWithString().equals("hole"))
 			{
@@ -72,42 +80,42 @@ public void Die()
 			}else if(!floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString().equals("worker"))
 			{
 				this.Die();
-				System.out.println("Worker die by sandwitch..");
+				System.out.println("Worker with ID: "+ this.id  + " die by sandwitch..");
 			}
 			
 		}else if(boxsquareID==this.squareid+1)//worker is on your right side
 		{
-			System.out.println("there is a box on your right");
+			
 			if(floor.get(this.squareid-1-1).IsOccupied==false||floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString().equals("hole"))
 			{
 			this.Move(Direction.LEFT);
 			}else if(!floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString().equals("worker"))
 			{
 				this.Die();
-				System.out.println("Worker die by sandwitch..");
+				System.out.println("Worker with ID: "+ this.id  + " die by sandwitch..");
 			}
 			
 		}else if(boxsquareID==this.squareid+6)//worker is below you
 		{
-			System.out.println("there is a box on your bottom");
+			
 			if(floor.get(this.squareid-1-6).IsOccupied==false||floor.get(this.squareid-1-6).getOccupieThingOnSquareWithString().equals("hole"))
 			{
 			this.Move(Direction.UP);
 			}else if(!floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString().equals("worker"))
 			{
 				this.Die();
-				System.out.println("Worker die by sandwitch..");
+				System.out.println("Worker with ID: "+ this.id  + " die by sandwitch..");
 			}
 		}else if(boxsquareID==this.squareid-6)//worker is above you
 		{
-			System.out.println("there is a box on your top");
+			
 			if(floor.get(this.squareid-1+6).IsOccupied==false||floor.get(this.squareid-1+6).getOccupieThingOnSquareWithString().equals("hole"))
 			{
 			this.Move(Direction.DOWN);
 			}else if(!floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString().equals("worker"))
 			{
 				this.Die();
-				System.out.println("Worker die by sandwitch..");
+				System.out.println("Worker with ID: "+ this.id  + " die by sandwitch..");
 			}
 		}
 
