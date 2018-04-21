@@ -6,7 +6,7 @@ public class Worker extends Thing {
 	
 	private int id;
 	private int squareid;
-
+	private boolean isDie;
 	
 	
 static ArrayList<Square> floor = Floor.getSquare();
@@ -31,28 +31,50 @@ public void Move(Direction d)
 {
 	switch(d)
 		{
-			case UP:    floor.get(this.squareid-1).Remove();
+			case UP:    if(!this.isDie){
+						floor.get(this.squareid-1).Remove();
 						this.setsquareid(getsquareid()-6);
 					    floor.get(this.squareid-1).SetObjectOnSquare(this);
-					    System.out.println("Worker with ID "+ this.id + " moved up"); break;
-					    
+					    System.out.println("Worker with ID "+ this.id + " moved up"); 
+						}else
+						{
+							System.out.println("Worker died, can not move");
+						}break;
 			
-			case LEFT:  floor.get(this.squareid-1).Remove();
+			case LEFT:   if(!this.isDie){
+						floor.get(this.squareid-1).Remove();
 						this.setsquareid(getsquareid()-1);
 						floor.get(this.squareid-1).SetObjectOnSquare(this); 
 						System.out.println("Worker with ID "+ this.id + " moved left");
+						}else
+						{
+							System.out.println("Worker died, can not move");
+						}
+						
 						break;
 			
-			case DOWN:  floor.get(this.squareid-1).Remove();
+			case DOWN:  if(!this.isDie){
+						floor.get(this.squareid-1).Remove();
 						this.setsquareid(getsquareid()+6);
 						floor.get(this.squareid-1).SetObjectOnSquare(this); 
 						System.out.println("Worker with ID "+ this.id + " moved down");
+						}else
+						{
+						 System.out.println("Worker died, can not move");
+						}
 						break;
 			
-			case RIGHT:  floor.get(this.squareid-1).Remove();
+			case RIGHT: 
+						if(!this.isDie){
+						floor.get(this.squareid-1).Remove();
 						 this.setsquareid(getsquareid()+1);
 						 floor.get(this.squareid-1).SetObjectOnSquare(this);
 						 System.out.println("Worker with ID "+ this.id + " moved right");
+						}else
+						{
+						 System.out.println("Worker died, can not move");
+						}
+						 
 						 break;
 			
 		}	
@@ -63,6 +85,7 @@ public void Die()
 {   
 	
 	floor.get(this.squareid-1).Remove();
+	this.isDie=true;
 }
 	
 	public void HitBy(Box b){

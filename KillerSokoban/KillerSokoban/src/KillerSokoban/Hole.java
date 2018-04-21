@@ -27,7 +27,7 @@ public class Hole extends Thing {
 	public void HitBy(Box b)
 	{
 		if(this.holeAppear == true)
-		{	floor.get(b.GetSquare().getid() - 1).Remove();
+		{	b.Eliminate();
 		System.out.println("Box with ID: "+ b.getboxid()+" Has been eliminated by hole");
 		}
 		
@@ -38,8 +38,9 @@ public class Hole extends Thing {
 	public void HitBy(Worker w)
 	{
 		if(this.holeAppear == true)
-			{floor.get(w.getsquareid()- 1).Remove();
+			{w.Die();
 			System.out.println("worker with ID: "+w.getworkerid()+ " has been eliminated by hole");
+			
 			}
 		else
 			return;

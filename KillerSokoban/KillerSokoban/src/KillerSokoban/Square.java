@@ -52,6 +52,8 @@ public class Square {
 		} else
 		{
 			System.out.println("There is an object in this square already.");
+					System.out.println("object name: "+ this.getOccupieThingOnSquareWithString());
+					
 			
 			
 			

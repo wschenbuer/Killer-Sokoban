@@ -43,7 +43,9 @@ public class Box extends Obstacle implements Steppable  {
 			this.Step(Direction.RIGHT);
 			
 			
-			}else{System.out.println("Next square occuiped, can not move");}
+			}else{
+			System.out.println("Next square occuiped"+ floor.get(this.squareid-1+1).getOccupieThingOnSquareWithString());
+			}
 			
 		}else if(WorkerSquareID==this.squareid+1)//worker is on your right side
 		{
@@ -53,7 +55,9 @@ public class Box extends Obstacle implements Steppable  {
 			
 			
 			
-			}else{System.out.println("Next square occuiped, can not move");}
+			}else{
+			System.out.println("Next square occuiped"+ floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString());
+			}
 			
 		}else if(WorkerSquareID==this.squareid+6)//worker is below you
 		{
@@ -64,14 +68,14 @@ public class Box extends Obstacle implements Steppable  {
 			this.Step(Direction.UP);
 			
 			
-			}else{System.out.println("Next square occuiped, can not move");}
+			}else{System.out.println("Next square occuiped"+ floor.get(this.squareid-1-6).getOccupieThingOnSquareWithString());}
 		}else if(WorkerSquareID==this.squareid-6)//worker is above you
 		{
 			if(floor.get(this.squareid-1+6).IsOccupied==false||floor.get(this.squareid-1+6).getOccupieThingOnSquareWithString().equals("hole"))
 			{
 			this.Step(Direction.DOWN);
 			
-			}else{System.out.println("Next square occuiped, can not move");}
+			}else{System.out.println("Next square occuiped"+ floor.get(this.squareid-1+6).getOccupieThingOnSquareWithString());}
 		}
 	}
 	

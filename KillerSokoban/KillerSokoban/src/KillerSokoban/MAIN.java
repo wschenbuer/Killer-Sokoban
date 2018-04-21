@@ -204,11 +204,13 @@ public class MAIN {
 				
 				if(mainWorker.getsquareid()>=8&&mainWorker.getsquareid()<=11)
 				{
-				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.UP);
-				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.UP);
+				
+					
+				System.out.println("Wall infront, can not move");
 				
 				
-				//do nothing
+				
+				
 				
 				
 				}
@@ -222,23 +224,35 @@ public class MAIN {
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
 				
+				if(neighborname.equals("hole"))
+				{
+					////////////////////////////
+					
+					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+					
+					mainWorker.Move(Direction.LEFT);
+					hole.HitBy(mainWorker);
+					
+					
+					
+				}
 				
-				
-				if(!neighborname.equals("box")&&!neighborname.equals("pillar")&&!neighborname.equals("worker"))
+				if(!neighborname.equals("box")&&!neighborname.equals("pillar")&&!neighborname.equals("worker")&&!neighborname.equals("hole"))
 				{
 					
 					
 					mainWorker.Move(Direction.UP);
 					
-					if(neighborname.equals("hole"))
-					{
-						mainWorker.Die();
-						System.out.println("Worker died by falling into hole");
-					}
 					
-				}else
-				{
-					System.out.println("Can not move, obstacle infront!");
+					
+				}
+				
+				if(neighborname.equals("box")&&neighborname.equals("pillar")&&neighborname.equals("worker")){
+					
+					
+					System.out.println("Can not move, thing infront!");
+							
+							
 				}
 				
 				}
@@ -276,10 +290,14 @@ public class MAIN {
 				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
 				{		
 					box = (Box) floor.get(mainWorker.getsquareid()-1-6).getthissquare().getObjectOnSquare();
+					
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-12).getthissquare().getObjectOnSquare();
 					
 					hole.HitBy(box);
-					box.HitBy(mainWorker);
+					
+					
+					
+					//box.HitBy(mainWorker);
 					mainWorker.Move(Direction.UP);
 					
 					
@@ -360,6 +378,8 @@ public class MAIN {
 						
 						hole.HitBy(worker);
 						box.HitBy(mainWorker);
+						
+						
 						mainWorker.Move(Direction.UP);
 						
 					}
@@ -402,7 +422,7 @@ public class MAIN {
 						box1 = (Box) floor.get(mainWorker.getsquareid()-1-12).getthissquare().getObjectOnSquare();
 						Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-18).getthissquare().getObjectOnSquare();
 						
-						box1.HitBy(box);
+						
 						hole.HitBy(box1);
 						box.HitBy(mainWorker);
 						mainWorker.Move(Direction.UP);
@@ -445,11 +465,10 @@ public class MAIN {
 
 				if(mainWorker.getsquareid()>=26&&mainWorker.getsquareid()<=29)
 				{
-				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
+					System.out.println("Wall infront, can not move");
 				
 				
-				//do nothing
+				
 				
 				
 				}
@@ -463,23 +482,33 @@ public class MAIN {
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
 				
+				if(neighborname.equals("hole"))
+				{
+					////////////////////////////
+					
+					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
+					
+					mainWorker.Move(Direction.LEFT);
+					hole.HitBy(mainWorker);
+					
+				}
 				
-				
-				if(!neighborname.equals("box")&&!neighborname.equals("pillar")&&!neighborname.equals("worker"))
+				if(!neighborname.equals("box")&&!neighborname.equals("pillar")&&!neighborname.equals("worker")&&!neighborname.equals("hole"))
 				{
 					
 					
 					mainWorker.Move(Direction.DOWN);
 					
-					if(neighborname.equals("hole"))
-					{
-						mainWorker.Die();
-						System.out.println("Worker died by falling into hole");
-					}
 					
-				}else
-				{
-					System.out.println("Can not move, obstacle infront!");
+					
+				}
+				
+				if(neighborname.equals("box")&&neighborname.equals("pillar")&&neighborname.equals("worker")){
+					
+					
+					System.out.println("Can not move, thing infront!");
+							
+							
 				}
 				
 				}
@@ -519,8 +548,9 @@ public class MAIN {
 					box = (Box) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+12).getthissquare().getObjectOnSquare();
 					
+					
 					hole.HitBy(box);
-					box.HitBy(mainWorker);
+					
 					mainWorker.Move(Direction.DOWN);
 					
 					
@@ -601,6 +631,8 @@ public class MAIN {
 						
 						hole.HitBy(worker);
 						box.HitBy(mainWorker);
+						
+						
 						mainWorker.Move(Direction.DOWN);
 						
 					}
@@ -643,8 +675,9 @@ public class MAIN {
 						box1 = (Box) floor.get(mainWorker.getsquareid()-1+12).getthissquare().getObjectOnSquare();
 						Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+18).getthissquare().getObjectOnSquare();
 						
-						box1.HitBy(box);
 						hole.HitBy(box1);
+						
+						
 						box.HitBy(mainWorker);
 						mainWorker.Move(Direction.DOWN);
 						
@@ -681,7 +714,521 @@ public class MAIN {
 				
 				
 				break;
+			case LEFT:   
 				
+
+				if(mainWorker.getsquareid()%6==2)
+				{
+				
+				
+				
+				System.out.println("Wall infront, can not move");
+				
+				
+				}
+				
+				if(mainWorker.getsquareid()%6==3)
+				{
+					
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				
+				if(neighborname.equals("hole"))
+				{
+					////////////////////////////
+					
+					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+					
+					
+					mainWorker.Move(Direction.LEFT);
+					hole.HitBy(mainWorker);
+					
+					
+				}
+				
+				if(!neighborname.equals("box")&&!neighborname.equals("pillar")&&!neighborname.equals("worker")&&!neighborname.equals("hole"))
+				{
+					
+					
+					mainWorker.Move(Direction.LEFT);
+					
+					
+					
+				}
+				
+				if(neighborname.equals("box")&&neighborname.equals("pillar")&&neighborname.equals("worker")){
+					
+					
+					System.out.println("Can not move, thing infront!");
+							
+							
+				}
+				
+				}
+				
+				
+				if(mainWorker.getsquareid()%6==4)
+				{
+					
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
+				
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				neighbor3=neighbor2.GetNeighbor(Direction.LEFT);
+				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
+				
+				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
+				{
+					
+				box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+				
+				box.HitBy(mainWorker);
+				
+				mainWorker.Move(Direction.LEFT);
+				
+				
+				
+				}else if(neighborname.equals("box")&&(neighbor2name.equals("box")||(neighbor2name.equals("pillar"))))
+				{
+					box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+					box.HitBy(mainWorker);
+					
+					
+				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
+				{		
+					box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-2).getthissquare().getObjectOnSquare();
+					
+					
+					hole.HitBy(box);
+					mainWorker.Move(Direction.LEFT);
+					
+					
+					
+				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
+				{
+					
+					box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+					worker = (Worker) floor.get(mainWorker.getsquareid()-1-2).getthissquare().getObjectOnSquare();
+					
+					worker.HitBy(box);
+					box.HitBy(mainWorker);
+					mainWorker.Move(Direction.LEFT);
+					
+				
+				}else if(neighborname.equals("worker")||neighborname.equals("pillar"))
+				{
+					System.out.println("Worker or pillar infront of you, can not move");
+					
+					
+					
+				}else if(neighborname.equals("nothing"))
+				{
+					mainWorker.Move(Direction.LEFT);
+					
+				}
+				
+				
+				
+				
+				}
+				
+				
+				if(mainWorker.getsquareid()%6==5)
+				{
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				neighbor3=neighbor2.GetNeighbor(Direction.LEFT);
+				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
+				
+				
+				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
+				{
+					
+				box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+				
+				box.HitBy(mainWorker);
+				
+				mainWorker.Move(Direction.LEFT);
+				
+				
+				}else if(neighborname.equals("box")&&(neighbor2name.equals("pillar")))
+				{
+					System.out.println("pillar infront, can not push box!");
+					
+					
+				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
+				{
+					if(neighbor3name.equals("box")||neighbor3name.equals("pillar"))
+					{
+						worker = (Worker) floor.get(mainWorker.getsquareid()-1-2).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+						
+						worker.HitBy(box);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.LEFT);
+						
+						
+					}
+					if(neighbor3name.equals("hole"))//worker box worker hole
+					{
+						box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+						Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-3).getthissquare().getObjectOnSquare();
+						worker = (Worker) floor.get(mainWorker.getsquareid()-1-2).getthissquare().getObjectOnSquare();
+						
+						
+						
+						hole.HitBy(worker);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.LEFT);
+						
+					}
+					if(neighbor3name.equals("worker"))// worker box worker worker
+					{
+						System.out.println("can not move, stopped by 2 workers");
+					}
+					
+					if(neighbor3name.equals("nothing"))//worker box worker nothing
+					{
+						
+						box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+						worker=(Worker)floor.get(mainWorker.getsquareid()-1-2).getthissquare().getObjectOnSquare();
+						
+						worker.HitBy(box);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.LEFT);
+						
+						
+						
+					}
+				
+				}else if(neighborname.equals("box")&&neighbor2name.equals("box"))
+				{
+					if(neighbor3name.equals("nothing"))
+					{
+						box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1-2).getthissquare().getObjectOnSquare();
+						
+						
+						box1.HitBy(box);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.LEFT);
+						
+						
+					}
+					if(neighbor3name.equals("hole"))
+					{
+						box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1-2).getthissquare().getObjectOnSquare();
+						Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-3).getthissquare().getObjectOnSquare();
+						
+						
+						hole.HitBy(box1);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.LEFT);
+						
+						
+					}
+					if((neighbor3name.equals("pillar")||(neighbor3name.equals("box"))))
+					{
+						System.out.println("Can not move");
+					}
+					if((neighbor3name.equals("worker")))//worker box box worker
+					{
+						
+						
+						box = (Box) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1-2).getthissquare().getObjectOnSquare();
+						worker=(Worker)floor.get(mainWorker.getsquareid()-1-3).getthissquare().getObjectOnSquare();
+						
+						worker.HitBy(box1);
+						box1.HitBy(box);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.LEFT);
+						
+						
+					}
+					
+				}else if(neighborname.equals("nothing"))
+				{
+					mainWorker.Move(Direction.LEFT);
+					
+				}
+				
+}
+				
+				
+				
+				break;
+			case RIGHT: 
+				
+				if(mainWorker.getsquareid()%6==5)
+				{
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.RIGHT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.RIGHT);
+				
+				
+				System.out.println("Wall infront, can not move");
+				
+				
+				}
+				
+				if(mainWorker.getsquareid()%6==4)
+				{
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.RIGHT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.RIGHT);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.RIGHT);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				
+				
+				
+				if(neighborname.equals("hole"))
+				{
+					////////////////////////////
+					
+					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+					
+					mainWorker.Move(Direction.LEFT);
+					hole.HitBy(mainWorker);
+					
+				}
+				
+				if(!neighborname.equals("box")&&!neighborname.equals("pillar")&&!neighborname.equals("worker")&&!neighborname.equals("hole"))
+				{
+					
+					
+					mainWorker.Move(Direction.RIGHT);
+					
+					
+					
+				}
+				
+				if(neighborname.equals("box")&&neighborname.equals("pillar")&&neighborname.equals("worker")){
+					
+					
+					System.out.println("Can not move, thing infront!");
+							
+							
+				}
+				
+				}
+				
+				
+				if(mainWorker.getsquareid()%6==3)
+				{
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.RIGHT);
+				
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.RIGHT);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.RIGHT);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				neighbor3=neighbor2.GetNeighbor(Direction.RIGHT);
+				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
+				
+				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
+				{
+					
+				box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+				
+				box.HitBy(mainWorker);
+				
+				mainWorker.Move(Direction.RIGHT);
+				
+				
+				
+				}else if(neighborname.equals("box")&&(neighbor2name.equals("box")||(neighbor2name.equals("pillar"))))
+				{
+					box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+					box.HitBy(mainWorker);
+					
+					
+				}else if(neighborname.equals("box")&&neighbor2name.equals("hole"))
+				{		
+					box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+2).getthissquare().getObjectOnSquare();
+					
+					
+					hole.HitBy(box);
+					
+					mainWorker.Move(Direction.RIGHT);
+					
+					
+				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
+				{
+					
+					box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+					worker = (Worker) floor.get(mainWorker.getsquareid()-1+2).getthissquare().getObjectOnSquare();
+					
+					worker.HitBy(box);
+					box.HitBy(mainWorker);
+					mainWorker.Move(Direction.RIGHT);
+					
+				
+				}else if(neighborname.equals("worker")||neighborname.equals("pillar"))
+				{
+					System.out.println("Worker or pillar infront of you, can not move");
+					
+					
+					
+				}else if(neighborname.equals("nothing"))
+				{
+					mainWorker.Move(Direction.RIGHT);
+					
+				}
+				
+				
+				
+				
+				}
+				
+				
+				if(mainWorker.getsquareid()%6==2)
+				{
+					
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.RIGHT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.RIGHT);
+				
+				neighbor2=neighbor.GetNeighbor(Direction.RIGHT);
+				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
+				
+				neighbor3=neighbor2.GetNeighbor(Direction.RIGHT);
+				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
+				
+				
+				if(neighborname.equals("box")&&neighbor2name.equals("nothing"))//Worker box
+				{
+					
+				box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+				
+				box.HitBy(mainWorker);
+				
+				mainWorker.Move(Direction.RIGHT);
+				
+				
+				}else if(neighborname.equals("box")&&(neighbor2name.equals("pillar")))
+				{
+					System.out.println("pillar infront, can not push box!");
+					
+					
+				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
+				{
+					if(neighbor3name.equals("box")||neighbor3name.equals("pillar"))
+					{
+						worker = (Worker) floor.get(mainWorker.getsquareid()-1+2).getthissquare().getObjectOnSquare();
+						box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+						
+						worker.HitBy(box);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.RIGHT);
+						
+						
+					}
+					if(neighbor3name.equals("hole"))//worker box worker hole
+					{
+						box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+						Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+3).getthissquare().getObjectOnSquare();
+						worker = (Worker) floor.get(mainWorker.getsquareid()-1+2).getthissquare().getObjectOnSquare();
+						
+						hole.HitBy(worker);
+						box.HitBy(mainWorker);
+						
+						
+						mainWorker.Move(Direction.RIGHT);
+						
+					}
+					if(neighbor3name.equals("worker"))// worker box worker worker
+					{
+						System.out.println("can not move, stopped by 2 workers");
+					}
+					
+					if(neighbor3name.equals("nothing"))//worker box worker nothing
+					{
+						
+						box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+						worker=(Worker)floor.get(mainWorker.getsquareid()-1+2).getthissquare().getObjectOnSquare();
+						
+						worker.HitBy(box);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.RIGHT);
+						
+						
+						
+					}
+				
+				}else if(neighborname.equals("box")&&neighbor2name.equals("box"))
+				{
+					if(neighbor3name.equals("nothing"))
+					{
+						box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1+2).getthissquare().getObjectOnSquare();
+						
+						
+						box1.HitBy(box);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.RIGHT);
+						
+						
+					}
+					if(neighbor3name.equals("hole"))
+					{
+						box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1+2).getthissquare().getObjectOnSquare();
+						Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+3).getthissquare().getObjectOnSquare();
+						
+						
+						hole.HitBy(box1);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.RIGHT);
+						
+						
+					}
+					if((neighbor3name.equals("pillar")||(neighbor3name.equals("box"))))
+					{
+						System.out.println("Can not move");
+					}
+					if((neighbor3name.equals("worker")))//worker box box worker
+					{
+						
+						
+						box = (Box) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
+						box1 = (Box) floor.get(mainWorker.getsquareid()-1+2).getthissquare().getObjectOnSquare();
+						worker=(Worker)floor.get(mainWorker.getsquareid()-1+3).getthissquare().getObjectOnSquare();
+						
+						worker.HitBy(box1);
+						box1.HitBy(box);
+						box.HitBy(mainWorker);
+						mainWorker.Move(Direction.RIGHT);
+						
+						
+					}
+					
+				}else if(neighborname.equals("nothing"))
+				{
+					mainWorker.Move(Direction.RIGHT);
+					
+				}
+				
+}
+				
+				
+				
+				
+				
+				break;
 			}	
 		
 			if(firstelement.equals("end"))
