@@ -1170,9 +1170,11 @@ public class MAIN {
 				if(neighborname.equals("hole"))
 				{
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
+					
 					mainWorker.Move(Direction.DOWN);
+					
 					hole.HitBy(mainWorker);
-					System.out.println("123");
+					
 				}
 }
 				break;
