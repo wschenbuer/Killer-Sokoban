@@ -54,7 +54,7 @@ public class MAIN {
 		String[] Input = userInput.split(" ");
 		
 		userInput = Input[0].toLowerCase();
-		
+	
 		
 		
 		
@@ -1799,7 +1799,7 @@ public class MAIN {
 					mainWorker.Move(Direction.RIGHT);/*********************************************************************************************************************************/
 					switches.HitBy(box, hole);
 					
-					System.out.println("here");
+					
 					
 					
 				}
