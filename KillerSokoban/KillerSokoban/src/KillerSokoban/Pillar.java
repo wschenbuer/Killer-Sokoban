@@ -16,4 +16,12 @@ private int squareid;
 	{
 		this.id=id;
 	}
+	public void HitBy(Worker w)
+	{
+		System.out.println("Pillar infront, can not move");
+	}
+	public void HitBy(Box box)
+	{
+		System.out.println("Pillar infront, can not move");
+	}
 }

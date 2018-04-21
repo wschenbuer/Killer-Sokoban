@@ -53,12 +53,23 @@ public class Hole extends Thing {
 	}
 	
 	public void HoleAppear() {
-		holeAppear = true;
-		System.out.println("Hole with ID: "+ this.id +"appeard");
+		this.holeAppear = true; 
+		System.out.println("Hole with ID: "+ this.id +" appeard");
+		
+		if(floor.get(this.squareid-1).getOccupieThingOnSquareWithString().equals("worker"))
+		{
+			floor.get(this.squareid-1).Remove();
+			System.out.println("Worker standing on the hole falling into hole");
+			
+		}else if(floor.get(this.squareid-1).getOccupieThingOnSquareWithString().equals("box"))
+		{
+			floor.get(this.squareid-1).Remove();
+			System.out.println("Box standing on the hole falling into hole");
+		}
 	}
 	
 	public void HoleDisappear() {
-		holeAppear = false;
-		System.out.println("Hole with ID: "+ this.id +"disappeard");
+		this.holeAppear = false;
+		System.out.println("Hole with ID: "+ this.id +" disappeard");
 	}
 }

@@ -30,13 +30,18 @@ public class Switch extends Thing {
 	
 	public void HitBy(Box b, Hole h)
 	{
+		
+		try{
 		SwitchedOn = true;
 		h.HoleAppear();
+		}catch(NullPointerException e){System.out.println("Box stepped on switch with id: "+ this.id	+" but No corresponding hole to this switch");}
 	}
 	
 	public void HitBy(Worker w, Hole h)
 	{
+		try{
 		SwitchedOn = false;
 		h.HoleDisappear();
+		}catch(NullPointerException e){System.out.println("Worker stepped on switch with id: "+ this.id	+" but No corresponding hole to this switch");}
 	}
 }
