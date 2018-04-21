@@ -53,7 +53,7 @@ public class MAIN {
 			
 		String[] Input = userInput.split(" ");
 		
-		userInput = Input[0];
+		userInput = Input[0].toLowerCase();
 		
 		
 		
@@ -164,7 +164,7 @@ public class MAIN {
 				System.out.println("Game END!");
 				System.exit(0);
 			}
-			String firstelement = Input1[0];
+			String firstelement = Input1[0].toLowerCase();
 			
 			int workerid= Integer.parseInt(Input1[1]);
 			
