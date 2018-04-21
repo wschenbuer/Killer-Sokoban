@@ -39,7 +39,8 @@ public void Move(Direction d)
 						}else
 						{
 							System.out.println("Worker died, can not move");
-						}break;
+						}
+						break;
 			
 			case LEFT:   if(!this.isDie){
 						floor.get(this.squareid-1).Remove();
