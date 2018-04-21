@@ -167,7 +167,7 @@ public class MAIN {
 				d=Direction.UP;
 			}else if(direction.equals("down"))
 					{
-				d=Direction.DOWN;
+				d=Direction.LEFT;
 					}
 			else if(direction.equals("left"))
 			{
@@ -709,10 +709,10 @@ public class MAIN {
 				
 				if(mainWorker.getsquareid()>=20&&mainWorker.getsquareid()<=23)
 				{
-				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
 				
-				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
 			
@@ -734,7 +734,7 @@ public class MAIN {
 					Switch switches = (Switch) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 					Hole hole = null;// = (Hole) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 					
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 					for(int i=0;i<holelist.size();i++)
 					{
@@ -757,7 +757,7 @@ public class MAIN {
 					
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 					
-					mainWorker.Move(Direction.DOWN);/*********************************************************************************************************************************/
+					mainWorker.Move(Direction.LEFT);/*********************************************************************************************************************************/
 					
 					hole.HitBy(mainWorker);
 					
@@ -767,7 +767,7 @@ public class MAIN {
 				{
 					
 					
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 					
 					
@@ -786,14 +786,14 @@ public class MAIN {
 				
 				if(mainWorker.getsquareid()>=14&&mainWorker.getsquareid()<=17)
 				{
-				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
 				
-				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
 				
-				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
-				neighbor3=neighbor2.GetNeighbor(Direction.DOWN);
+				neighbor3=neighbor2.GetNeighbor(Direction.LEFT);
 				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
 				
 				
@@ -803,7 +803,7 @@ public class MAIN {
 					Switch switches = (Switch) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 					Hole hole = null;// = (Hole) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
 					
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 					for(int i=0;i<holelist.size();i++)
 					{
@@ -836,7 +836,7 @@ public class MAIN {
 						}
 					}
 					
-					mainWorker.Move(Direction.DOWN);/*********************************************************************************************************************************/
+					mainWorker.Move(Direction.LEFT);/*********************************************************************************************************************************/
 					switches.HitBy(box, hole);
 					
 					
@@ -857,7 +857,7 @@ public class MAIN {
 				
 				box.HitBy(mainWorker);
 				
-				mainWorker.Move(Direction.DOWN);
+				mainWorker.Move(Direction.LEFT);
 				
 				
 				
@@ -879,7 +879,7 @@ public class MAIN {
 					
 					
 					//box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					hole.HitBy(box);
 					
 				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
@@ -890,7 +890,7 @@ public class MAIN {
 					
 					worker.HitBy(box);
 					box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 				
 				}
@@ -909,13 +909,13 @@ public class MAIN {
 					
 				if(neighborname.equals("nothing"))
 				{
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 				}
 				if(neighborname.equals("hole"))
 				{
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					hole.HitBy(mainWorker);
 					
 				}
@@ -928,13 +928,13 @@ public class MAIN {
 				
 				if(mainWorker.getsquareid()>=8&&mainWorker.getsquareid()<=11)
 				{
-				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
 				
-				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
-				neighbor3=neighbor2.GetNeighbor(Direction.DOWN);
+				neighbor3=neighbor2.GetNeighbor(Direction.LEFT);
 				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
 				
 				if(neighborname.equals("switch"))
@@ -949,7 +949,7 @@ public class MAIN {
 							
 						}
 					}
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					switches.HitBy(mainWorker,hole);
 					
 					
@@ -983,7 +983,7 @@ public class MAIN {
 					}
 					box1.HitBy(box);
 					box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					switches.HitBy(box1,hole);
 					
 					
@@ -1009,7 +1009,7 @@ public class MAIN {
 					
 					
 					box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					switches.HitBy(worker,hole);
 					
 				}
@@ -1032,7 +1032,7 @@ public class MAIN {
 						}
 					}
 					box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					switches.HitBy(box, hole);
 					
 					
@@ -1047,7 +1047,7 @@ public class MAIN {
 				
 				box.HitBy(mainWorker);
 				
-				mainWorker.Move(Direction.DOWN);
+				mainWorker.Move(Direction.LEFT);
 				
 				
 				}else if(neighborname.equals("box")&&(neighbor2name.equals("pillar")))
@@ -1064,7 +1064,7 @@ public class MAIN {
 						
 						worker.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 						
 					}
@@ -1078,7 +1078,7 @@ public class MAIN {
 						box.HitBy(mainWorker);
 						
 						
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 					}
 					if(neighbor3name.equals("worker"))// worker box worker worker
@@ -1094,7 +1094,7 @@ public class MAIN {
 						
 						worker.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 						
 						
@@ -1110,7 +1110,7 @@ public class MAIN {
 						
 						box1.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 						
 					}
@@ -1124,7 +1124,7 @@ public class MAIN {
 					
 						box1.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						hole.HitBy(box1);
 						
 						
@@ -1144,20 +1144,20 @@ public class MAIN {
 						worker.HitBy(box1);
 						box1.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 						
 					}
 					
 				}else if(neighborname.equals("nothing"))
 				{
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 				}
 				if(neighborname.equals("hole"))
 				{
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1+6).getthissquare().getObjectOnSquare();
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					hole.HitBy(mainWorker);
 				}
 }
@@ -1180,10 +1180,10 @@ public class MAIN {
 				
 				if(mainWorker.getsquareid()%6==3)
 				{
-				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
 				
-				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
 			
@@ -1205,7 +1205,7 @@ public class MAIN {
 					Switch switches = (Switch) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
 					Hole hole = null;// = (Hole) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
 					
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 					for(int i=0;i<holelist.size();i++)
 					{
@@ -1228,7 +1228,7 @@ public class MAIN {
 					
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
 					
-					mainWorker.Move(Direction.DOWN);/*********************************************************************************************************************************/
+					mainWorker.Move(Direction.LEFT);/*********************************************************************************************************************************/
 					
 					hole.HitBy(mainWorker);
 					
@@ -1238,7 +1238,7 @@ public class MAIN {
 				{
 					
 					
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 					
 					
@@ -1257,14 +1257,14 @@ public class MAIN {
 				
 				if(mainWorker.getsquareid()%6==4)
 				{
-				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
 				
-				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
 				
-				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
-				neighbor3=neighbor2.GetNeighbor(Direction.DOWN);
+				neighbor3=neighbor2.GetNeighbor(Direction.LEFT);
 				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
 				
 				
@@ -1274,7 +1274,7 @@ public class MAIN {
 					Switch switches = (Switch) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
 					Hole hole = null;// = (Hole) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
 					
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 					for(int i=0;i<holelist.size();i++)
 					{
@@ -1307,7 +1307,7 @@ public class MAIN {
 						}
 					}
 					
-					mainWorker.Move(Direction.DOWN);/*********************************************************************************************************************************/
+					mainWorker.Move(Direction.LEFT);/*********************************************************************************************************************************/
 					switches.HitBy(box, hole);
 					
 					
@@ -1328,7 +1328,7 @@ public class MAIN {
 				
 				box.HitBy(mainWorker);
 				
-				mainWorker.Move(Direction.DOWN);
+				mainWorker.Move(Direction.LEFT);
 				
 				
 				
@@ -1350,7 +1350,7 @@ public class MAIN {
 					
 					
 					//box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					hole.HitBy(box);
 					
 				}else if(neighborname.equals("box")&&neighbor2name.equals("worker"))
@@ -1361,7 +1361,7 @@ public class MAIN {
 					
 					worker.HitBy(box);
 					box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 				
 				}
@@ -1380,13 +1380,13 @@ public class MAIN {
 					
 				if(neighborname.equals("nothing"))
 				{
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 				}
 				if(neighborname.equals("hole"))
 				{
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					hole.HitBy(mainWorker);
 					
 				}
@@ -1399,13 +1399,13 @@ public class MAIN {
 				
 				if(mainWorker.getsquareid()%6==5)
 				{
-				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.DOWN);
-				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.DOWN);
+				neighborname=floor.get(mainWorker.getsquareid()-1).GetNeighborStringName(Direction.LEFT);
+				neighbor=floor.get(mainWorker.getsquareid()-1).GetNeighbor(Direction.LEFT);
 				
-				neighbor2=neighbor.GetNeighbor(Direction.DOWN);
+				neighbor2=neighbor.GetNeighbor(Direction.LEFT);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
-				neighbor3=neighbor2.GetNeighbor(Direction.DOWN);
+				neighbor3=neighbor2.GetNeighbor(Direction.LEFT);
 				neighbor3name=neighbor3.getOccupieThingOnSquareWithString();
 				
 				if(neighborname.equals("switch"))
@@ -1420,7 +1420,7 @@ public class MAIN {
 							
 						}
 					}
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					switches.HitBy(mainWorker,hole);
 					
 					
@@ -1454,7 +1454,7 @@ public class MAIN {
 					}
 					box1.HitBy(box);
 					box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					switches.HitBy(box1,hole);
 					
 					
@@ -1480,7 +1480,7 @@ public class MAIN {
 					
 					
 					box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					switches.HitBy(worker,hole);
 					
 				}
@@ -1503,7 +1503,7 @@ public class MAIN {
 						}
 					}
 					box.HitBy(mainWorker);
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					switches.HitBy(box, hole);
 					
 					
@@ -1518,7 +1518,7 @@ public class MAIN {
 				
 				box.HitBy(mainWorker);
 				
-				mainWorker.Move(Direction.DOWN);
+				mainWorker.Move(Direction.LEFT);
 				
 				
 				}else if(neighborname.equals("box")&&(neighbor2name.equals("pillar")))
@@ -1535,7 +1535,7 @@ public class MAIN {
 						
 						worker.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 						
 					}
@@ -1549,7 +1549,7 @@ public class MAIN {
 						box.HitBy(mainWorker);
 						
 						
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 					}
 					if(neighbor3name.equals("worker"))// worker box worker worker
@@ -1565,7 +1565,7 @@ public class MAIN {
 						
 						worker.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 						
 						
@@ -1581,7 +1581,7 @@ public class MAIN {
 						
 						box1.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 						
 					}
@@ -1595,7 +1595,7 @@ public class MAIN {
 					
 						box1.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						hole.HitBy(box1);
 						
 						
@@ -1615,20 +1615,20 @@ public class MAIN {
 						worker.HitBy(box1);
 						box1.HitBy(box);
 						box.HitBy(mainWorker);
-						mainWorker.Move(Direction.DOWN);
+						mainWorker.Move(Direction.LEFT);
 						
 						
 					}
 					
 				}else if(neighborname.equals("nothing"))
 				{
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					
 				}
 				if(neighborname.equals("hole"))
 				{
 					Hole hole = (Hole) floor.get(mainWorker.getsquareid()-1-1).getthissquare().getObjectOnSquare();
-					mainWorker.Move(Direction.DOWN);
+					mainWorker.Move(Direction.LEFT);
 					hole.HitBy(mainWorker);
 				}
 }
