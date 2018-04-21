@@ -252,7 +252,7 @@ public class MAIN {
 				neighbor2=neighbor.GetNeighbor(Direction.UP);
 				neighbor2name=neighbor2.getOccupieThingOnSquareWithString();
 				
-			
+				
 				
 				if(neighborname.equals("worker"))
 				{
@@ -310,7 +310,7 @@ public class MAIN {
 					
 				}
 				
-				if(neighborname.equals("box")&&neighborname.equals("pillar")&&neighborname.equals("worker")){
+				if(neighborname.equals("box")||neighborname.equals("pillar")||neighborname.equals("worker")){
 					
 					
 					System.out.println("Can not move, thing infront!");
@@ -785,7 +785,7 @@ public class MAIN {
 					
 				}
 				
-				if(neighborname.equals("box")&&neighborname.equals("pillar")&&neighborname.equals("worker")){
+				if(neighborname.equals("box")||neighborname.equals("pillar")||neighborname.equals("worker")){
 					
 					
 					System.out.println("Can not move, thing infront!");
@@ -1260,7 +1260,7 @@ public class MAIN {
 					
 				}
 				
-				if(neighborname.equals("box")&&neighborname.equals("pillar")&&neighborname.equals("worker")){
+				if(neighborname.equals("box")||neighborname.equals("pillar")||neighborname.equals("worker")){
 					
 					
 					System.out.println("Can not move, thing infront!");
@@ -1675,6 +1675,8 @@ public class MAIN {
 				
 			
 				
+				
+				
 				if(neighborname.equals("worker"))
 				{
 					worker = (Worker) floor.get(mainWorker.getsquareid()-1+1).getthissquare().getObjectOnSquare();
@@ -1731,7 +1733,7 @@ public class MAIN {
 					
 				}
 				
-				if(neighborname.equals("box")&&neighborname.equals("pillar")&&neighborname.equals("worker")){
+				if(neighborname.equals("box")||neighborname.equals("pillar")||neighborname.equals("worker")){
 					
 					
 					System.out.println("Can not move, thing infront!");
@@ -1797,7 +1799,7 @@ public class MAIN {
 					mainWorker.Move(Direction.RIGHT);/*********************************************************************************************************************************/
 					switches.HitBy(box, hole);
 					
-					
+					System.out.println("here");
 					
 					
 				}
