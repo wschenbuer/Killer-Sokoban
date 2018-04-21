@@ -1,6 +1,7 @@
 package KillerSokoban;
 
 import java.awt.List;
+import java.nio.channels.AlreadyBoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -156,11 +157,19 @@ public class MAIN {
 			userInput1 = userInput1.toLowerCase();
 			String[] Input1 = userInput1.split(" ");
 			
+			//System.out.println(Input1.length);//3
+			if(Input1.length==1)
+			{
+				game.IsStart=false;
+				System.out.println("Game END!");
+				System.exit(0);
+			}
 			String firstelement = Input1[0];
 			
 			int workerid= Integer.parseInt(Input1[1]);
 			
 			String direction = Input1[2].toLowerCase();
+			
 			Direction d = null;
 			if(direction.equals("up"))
 			{
@@ -177,6 +186,8 @@ public class MAIN {
 			{
 					d=Direction.RIGHT;
 			}
+			
+			
 			Worker mainWorker = new Worker(100);
 			WorkerId.add(100);
 			//int currentworkersquareid = 0;
@@ -2106,10 +2117,7 @@ public class MAIN {
 				break;
 			}	
 		
-			if(firstelement.equals("end"))
-			{
-				game.IsStart=false;
-			}
+			
 			
 			
 				
