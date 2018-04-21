@@ -6,8 +6,14 @@ public class Hole extends Thing {
 	
 	private int id;
 	private int squareid;
-	private boolean holeAppear = true;
+	private boolean holeAppear;
 	static ArrayList<Square> floor = Floor.getSquare();
+	
+	public int getid()
+	{
+		return this.id;
+	}
+	
 	
 	public void setsquareid(int squareid)
 	{
@@ -48,9 +54,11 @@ public class Hole extends Thing {
 	
 	public void HoleAppear() {
 		holeAppear = true;
+		System.out.println("Hole with ID: "+ this.id +"appeard");
 	}
 	
 	public void HoleDisappear() {
 		holeAppear = false;
+		System.out.println("Hole with ID: "+ this.id +"disappeard");
 	}
 }

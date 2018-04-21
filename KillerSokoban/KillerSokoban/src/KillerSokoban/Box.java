@@ -37,7 +37,8 @@ public class Box extends Obstacle implements Steppable  {
 		if(WorkerSquareID==this.squareid-1)//worker is on your left side
 		{
 			//current square this.squareid-1
-			if(floor.get(this.squareid-1+1).IsOccupied==false||floor.get(this.squareid-1+1).getOccupieThingOnSquareWithString().equals("hole"))
+			if(floor.get(this.squareid-1+1).IsOccupied==false||floor.get(this.squareid-1+1).getOccupieThingOnSquareWithString().equals("hole")
+					||floor.get(this.squareid-1+1).getOccupieThingOnSquareWithString().equals("switch"))
 			{
 			
 			this.Step(Direction.RIGHT);
@@ -49,7 +50,8 @@ public class Box extends Obstacle implements Steppable  {
 			
 		}else if(WorkerSquareID==this.squareid+1)//worker is on your right side
 		{
-			if(floor.get(this.squareid-1-1).IsOccupied==false||floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString().equals("hole"))
+			if(floor.get(this.squareid-1-1).IsOccupied==false||floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString().equals("hole")
+					||floor.get(this.squareid-1-1).getOccupieThingOnSquareWithString().equals("switch"))
 			{
 			this.Step(Direction.LEFT);
 			
@@ -61,7 +63,8 @@ public class Box extends Obstacle implements Steppable  {
 			
 		}else if(WorkerSquareID==this.squareid+6)//worker is below you
 		{
-			if(floor.get(this.squareid-1-6).IsOccupied==false||floor.get(this.squareid-1-6).getOccupieThingOnSquareWithString().equals("hole"))
+			if(floor.get(this.squareid-1-6).IsOccupied==false||floor.get(this.squareid-1-6).getOccupieThingOnSquareWithString().equals("hole")
+					||floor.get(this.squareid-1-6).getOccupieThingOnSquareWithString().equals("switch"))
 			{
 				
 				
@@ -71,7 +74,8 @@ public class Box extends Obstacle implements Steppable  {
 			}else{System.out.println("Next square occuiped"+ floor.get(this.squareid-1-6).getOccupieThingOnSquareWithString());}
 		}else if(WorkerSquareID==this.squareid-6)//worker is above you
 		{
-			if(floor.get(this.squareid-1+6).IsOccupied==false||floor.get(this.squareid-1+6).getOccupieThingOnSquareWithString().equals("hole"))
+			if(floor.get(this.squareid-1+6).IsOccupied==false||floor.get(this.squareid-1+6).getOccupieThingOnSquareWithString().equals("hole")
+					||floor.get(this.squareid-1+6).getOccupieThingOnSquareWithString().equals("switch"))
 			{
 			this.Step(Direction.DOWN);
 			

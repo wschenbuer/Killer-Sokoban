@@ -43,7 +43,7 @@ public class Square {
 	{
 		
 		
-		if (this.IsOccupied==false||this.getOccupieThingOnSquareWithString().equals("hole")) {
+		if (this.IsOccupied==false||this.getOccupieThingOnSquareWithString().equals("hole")||this.getOccupieThingOnSquareWithString().equals("switch")) {
 			
 			this.IsOccupied=true;
 			this.object=object;

@@ -6,6 +6,12 @@ public class Switch extends Thing {
 	private int squareid;
 	private boolean SwitchedOn;
 	
+	public int getid()
+	{
+		return this.id;
+	}
+	
+	
 	public void setsquareid(int squareid)
 	{
 		this.squareid=squareid;
