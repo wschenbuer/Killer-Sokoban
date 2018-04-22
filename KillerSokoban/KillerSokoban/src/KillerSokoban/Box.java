@@ -79,7 +79,7 @@ public class Box extends Obstacle implements Steppable  {
 			{
 			this.Step(Direction.DOWN);
 			
-			}else{System.out.println("Next square occuiped"+ floor.get(this.squareid-1+6).getOccupieThingOnSquareWithString());}
+			}else{System.out.println("Next square occuiped "+ floor.get(this.squareid-1+6).getOccupieThingOnSquareWithString());}
 		}
 	}
 	
