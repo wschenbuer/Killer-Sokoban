@@ -45,7 +45,7 @@ public class Hole extends Thing {
 	{
 		if(this.holeAppear == true)
 			{w.Die();
-			System.out.println("worker with ID: "+w.getworkerid()+ " has been eliminated by hole");
+			
 			
 			}
 		else

@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class Floor implements Steppable
 {
 	static ArrayList<Square> floor = new ArrayList<Square>();
-	
+	static ArrayList<Worker> workerlist = new ArrayList<Worker>();
+	static ArrayList<Hole> holelist = new ArrayList<Hole>();
 	public static ArrayList<Square> getSquare()
 	{
 		return floor;
