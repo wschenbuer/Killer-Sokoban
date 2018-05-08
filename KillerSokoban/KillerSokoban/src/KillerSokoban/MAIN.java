@@ -36,6 +36,10 @@ public class MAIN {
 		//------------ FRAME ---------//
 		
 		//------------END FRAME---------//
+		View view = new View();
+		view.setVisible(true);
+		
+		
 		ArrayList<Square> floor = new ArrayList<Square>();
 
 		
