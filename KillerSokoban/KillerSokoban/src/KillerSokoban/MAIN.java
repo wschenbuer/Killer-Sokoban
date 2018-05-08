@@ -36,12 +36,17 @@ public class MAIN {
 		//------------ FRAME ---------//
 		
 		//------------END FRAME---------//
+		
+		Floor floor1= new Floor();
 		View view = new View();
-		view.setVisible(true);
+		floor1.setView(view);
+		
+		view.createWall(1, 1, 1);
 		
 		
+		
+	
 		ArrayList<Square> floor = new ArrayList<Square>();
-
 		
 		floor = Floor.getSquare();
 		ArrayList<Integer> WorkerId = new ArrayList<Integer>();
@@ -51,7 +56,7 @@ public class MAIN {
 		ArrayList<Integer> PillarId = new ArrayList<Integer>();
 		
 		Floor.CreateFloor(floor);
-		
+		view.setVisible(true);
 		ArrayList<Worker> workerlist = new ArrayList<Worker>();
 		ArrayList<Box> boxlist = new ArrayList<Box>();
 		ArrayList<Hole> holelist = new ArrayList<Hole>();

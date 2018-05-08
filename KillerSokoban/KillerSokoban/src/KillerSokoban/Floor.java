@@ -3,12 +3,21 @@ package KillerSokoban;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JPanel;
 
-public class Floor implements Steppable
+
+public class Floor extends JPanel implements Steppable
 {
 	static ArrayList<Square> floor = new ArrayList<Square>();
 	static ArrayList<Worker> workerlist = new ArrayList<Worker>();
 	static ArrayList<Hole> holelist = new ArrayList<Hole>();
+	static View view= new View();
+
+	public void setView(View view)
+	{
+		this.view= view;
+	}
+	
 	public static ArrayList<Square> getSquare()
 	{
 		return floor;
@@ -20,7 +29,8 @@ public class Floor implements Steppable
 	{
 		ArrayList<Wall> wall = new ArrayList<Wall>();
 		 int WallId=1;
-		 
+		 int counter = 0;
+		 int x=0,y=0;
 		 //Iterate through all squares
 		for(int i=1;i<=size*size;i++)
 		{
@@ -32,6 +42,20 @@ public class Floor implements Steppable
 				wall.add(new Wall(WallId,i));//add walls into squares that has ID = i
 				System.out.println("Wall with ID"+ WallId +" has been created on Square with ID " + i);
 				
+				for(int u=0;u<size*size;u++)
+				{
+					
+					if(floor.get(u).getid()==i)
+					{
+						x=floor.get(u).getX()-1;
+						y=floor.get(u).getY()-1;
+					}
+				}
+				
+				
+				//view.createWall(x, y, counter);
+				
+				counter++;
 				
 				floor.get(i-1).SetObjectOnSquare(walls);
 				

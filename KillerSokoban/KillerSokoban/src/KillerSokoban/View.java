@@ -4,15 +4,20 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
 import javafx.scene.image.*;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.imageio.ImageIO;
+
 
 public class View extends JFrame {
 	
@@ -29,28 +34,20 @@ public class View extends JFrame {
 	private JMenuItem loadGame= new JMenuItem ("Load Game");
 	private JMenuItem saveGame= new JMenuItem ("Save Game");
 	
-	
-	private JPanel GameJPanel = new JPanel();
-	
 
-	 
-	
 	View()
 	{
 		
-	GameJPanel.setLayout(new GridLayout(6,6));
 
-	GridPane gp = new GridPane();
-	
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	this.setSize(400,400);
+	this.setSize(700,700);
 	MenuJPanel.add(menuBar);
 	menuBar.add(GameMenu);
 	GameMenu.add(newGame);
 	GameMenu.add(loadGame);
 	GameMenu.add(saveGame);
 
-	JLabel wall= new JLabel(new ImageIcon("res/Wall_Gray.png"));
+
 	
 	
 	GameMenu.add(exit);
@@ -59,12 +56,26 @@ public class View extends JFrame {
 			System.exit(0);
 		}
 	});
-	setJMenuBar(menuBar);
+		setJMenuBar(menuBar);
 		this.add(MenuJPanel);
 		
-		GameJPanel.add(wall);
+		 
+		
 	
-		this.add(GameJPanel);
+	
+	}
+	
+	
+	public void createWall(int x, int y, int counter)
+	{
+		
+		 JLabel[] walls = new JLabel[20];
+		
+		 for(int i = 0 ; i< 20;i++)
+		 {
+			 walls[i]=new JLabel(new ImageIcon("res/Wall_Gray.png"));
+		 }
+	
 		
 	}
 
