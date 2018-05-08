@@ -41,7 +41,7 @@ public class MAIN {
 		View view = new View();
 		floor1.setView(view);
 		
-		view.createWall(1, 1, 1);
+		
 		
 		
 		

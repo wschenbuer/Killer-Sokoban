@@ -35,7 +35,7 @@ public class View extends JFrame {
 	private JMenuItem saveGame= new JMenuItem ("Save Game");
 	
 
-	View()
+	View()/*CONSTRUCTOR*/
 	{
 		
 
@@ -59,6 +59,12 @@ public class View extends JFrame {
 		setJMenuBar(menuBar);
 		this.add(MenuJPanel);
 		
+		
+		
+		
+		
+		
+		
 		 
 		
 	
@@ -66,19 +72,7 @@ public class View extends JFrame {
 	}
 	
 	
-	public void createWall(int x, int y, int counter)
-	{
-		
-		 JLabel[] walls = new JLabel[20];
-		
-		 for(int i = 0 ; i< 20;i++)
-		 {
-			 walls[i]=new JLabel(new ImageIcon("res/Wall_Gray.png"));
-		 }
 	
-		
-	}
-
 	
 	
 

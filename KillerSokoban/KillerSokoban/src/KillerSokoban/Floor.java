@@ -29,7 +29,7 @@ public class Floor extends JPanel implements Steppable
 	{
 		ArrayList<Wall> wall = new ArrayList<Wall>();
 		 int WallId=1;
-		 int counter = 0;
+		
 		 int x=0,y=0;
 		 //Iterate through all squares
 		for(int i=1;i<=size*size;i++)
@@ -53,11 +53,11 @@ public class Floor extends JPanel implements Steppable
 				}
 				
 				
-				//view.createWall(x, y, counter);
+				//view.createWall(x, y);/*create wall on GUI*/
 				
-				counter++;
 				
-				floor.get(i-1).SetObjectOnSquare(walls);
+				
+				floor.get(i-1).SetObjectOnSquare(walls);/*Create wall in game engine*/
 				
 				
 				WallId++;//each time we place a new wall, the next wall should have the id = WallID++
