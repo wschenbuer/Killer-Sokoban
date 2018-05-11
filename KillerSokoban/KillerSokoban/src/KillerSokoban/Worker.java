@@ -128,7 +128,9 @@ public void Die()
 		/*box comes from left*/if(BoxSquareId==this.squareid-1){direction=Direction.RIGHT;newSquareId = +1;}
 		/*box comes from right*/else if(BoxSquareId==this.squareid+1){direction=Direction.LEFT;newSquareId = -1;}
 		/*box comes from below*/else if(BoxSquareId==this.squareid+6){direction=Direction.UP;newSquareId = -6;}
-		/*box comes from up*/else if(BoxSquareId==this.squareid-6){direction=Direction.DOWN;newSquareId = +6;}
+		/*box comes from up*/else if(BoxSquareId==
+				
+				this.squareid-6){direction=Direction.DOWN;newSquareId = +6;}
 		
 		 if(floor.get(this.squareid-1).GetNeighbor(direction).getOccupieThingOnSquareWithString().equals("worker"))
 		 {

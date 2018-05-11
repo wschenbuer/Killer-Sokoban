@@ -1,22 +1,7 @@
 package KillerSokoban;
 
-import java.awt.BorderLayout;
-import java.awt.List;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.nio.channels.AlreadyBoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.KeyStroke;
 
 
 public class MAIN {
@@ -41,7 +26,7 @@ public class MAIN {
 		View view = new View();
 		floor1.setView(view);
 		
-		
+		FieldMap map = new FieldMap(6,6);
 		
 		
 		
@@ -55,7 +40,7 @@ public class MAIN {
 		ArrayList<Integer> SwitchId = new ArrayList<Integer>();
 		ArrayList<Integer> PillarId = new ArrayList<Integer>();
 		
-		Floor.CreateFloor(floor);
+		floor = Floor.CreateFloor(floor);
 		view.setVisible(true);
 		ArrayList<Worker> workerlist = new ArrayList<Worker>();
 		ArrayList<Box> boxlist = new ArrayList<Box>();
@@ -113,7 +98,7 @@ public class MAIN {
 				WorkerId.add(thingId);// add this ID to the worker ID list				
 				workerlist.add(worker);
 				floor.get(squareID-1).SetObjectOnSquare(worker);
-				
+
 				
 				
 			}else if(userInput.equals("box"))
@@ -157,7 +142,7 @@ public class MAIN {
 		}else{ System.out.println("The input ID is invalid, please choose another ID!");}
 		
 		}else{System.out.println("please insert integer format!");}
-		
+		map.refresh(floor);
 		System.out.println("--Keep adding objects, or enter 'start' to start game--	" );
 		userInput = scan.nextLine();
 			
@@ -192,7 +177,7 @@ public class MAIN {
 		System.out.println("Make actions:");
 		System.out.println("Syntax: Worker workerid direction ");
 		System.out.println("Enter 'end' to stop game");
-		
+
 		
 		while(game.IsStart)
 		{
@@ -262,6 +247,8 @@ public class MAIN {
 			case RIGHT:	mainWorker.Move(Direction.RIGHT);	break;
 			
 			}
+			map.refresh(floor);
+			
 			boolean AllBoxesAreStuckCheckSecond=true;
 			
 		

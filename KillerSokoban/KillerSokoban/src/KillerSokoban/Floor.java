@@ -70,7 +70,7 @@ public class Floor extends JPanel implements Steppable
 	}
 	
 	 
-	static public void CreateFloor(ArrayList<Square> floor)
+	static public ArrayList<Square> CreateFloor(ArrayList<Square> floor)
 	{
 	
 	System.out.println("Building map");
@@ -118,6 +118,7 @@ public class Floor extends JPanel implements Steppable
 	
 	}
 	SetWall(size);// calls setwall function after creating map
+	return floor;
 	}
 	public Worker GetWorker(Square s){
 		return null;}
