@@ -14,37 +14,28 @@ public class MAIN {
 	      } catch (NumberFormatException e) {  
 	         return false;  
 	      }  
-	}
+}
 
 	
 	public static void main(String[] args) {
-		//------------ FRAME ---------//
-		
-		//------------END FRAME---------//
-		
+		//CREATE OBJECTS
 		Floor floor1= new Floor();
 		View view = new View();
 		floor1.setView(view);
-		
 		FieldMap map = new FieldMap(6,6);
-		
-		
-		
-	
 		ArrayList<Square> floor = new ArrayList<Square>();
-		
 		floor = Floor.getSquare();
 		ArrayList<Integer> WorkerId = new ArrayList<Integer>();
 		ArrayList<Integer> BoxId = new ArrayList<Integer>();
 		ArrayList<Integer> HoleId = new ArrayList<Integer>();
 		ArrayList<Integer> SwitchId = new ArrayList<Integer>();
 		ArrayList<Integer> PillarId = new ArrayList<Integer>();
-		
-		floor = Floor.CreateFloor(floor);
-		view.setVisible(true);
+		floor = Floor.CreateFloor(floor);  //create map
+		view.setVisible(true); 
 		ArrayList<Worker> workerlist = new ArrayList<Worker>();
 		ArrayList<Box> boxlist = new ArrayList<Box>();
 		ArrayList<Hole> holelist = new ArrayList<Hole>();
+		//--------------
 		workerlist=Floor.workerlist;
 		holelist=Floor.holelist;
 		
@@ -57,20 +48,10 @@ public class MAIN {
 		userInput = scan.nextLine();
 		userInput=userInput.toLowerCase();
 		
-		while(!userInput.equals("start"))
+		while(!userInput.equals("start")) //Loop for creating objects on the map
 		{
-	
-			
 		String[] Input = userInput.split(" ");
-		
 		userInput = Input[0].toLowerCase();
-	
-		
-		
-		
-		
-		
-		
 		if(tryParseInt(Input[1])&&tryParseInt(Input[2]))
 		{	
 			int thingId = Integer.parseInt(Input[1]);
@@ -88,10 +69,10 @@ public class MAIN {
 			
 			
 		{
-			
+			//COMPARE USER INPUT SO THAT THE PROGRAM CAN REALIZE IT AND CREATE ON MAP
 			if(floor.get(squareID-1).IsOccupied==false||userInput.equals("hole")||userInput.equals("switch"))
 			{
-			if(userInput.equals("worker"))
+			if(userInput.equals("worker")) //create worker
 			{
 				Worker worker = new Worker(thingId);
 				worker.setsquareid(squareID);
@@ -101,7 +82,7 @@ public class MAIN {
 
 				
 				
-			}else if(userInput.equals("box"))
+			}else if(userInput.equals("box")) //create box
 			{
 				Box box = new Box(thingId);
 				boxlist.add(box);
@@ -112,7 +93,7 @@ public class MAIN {
 				
 				
 				
-			}else if(userInput.equals("hole"))
+			}else if(userInput.equals("hole")) //create hole
 			{
 				Hole hole = new Hole(thingId);
 				hole.setsquareid(squareID);
@@ -120,14 +101,14 @@ public class MAIN {
 				holelist.add(hole);
 				floor.get(squareID-1).SetHoleOnSquare(hole);
 				
-			}else if(userInput.equals("switch"))
+			}else if(userInput.equals("switch")) //create switch
 			{
 				Switch switches = new Switch(thingId);
 				switches.setsquareid(squareID);
 				SwitchId.add(thingId);// add this ID to the box ID list				
 				
 				floor.get(squareID-1).SetSwitchOnSquare(switches);
-			}else if(userInput.equals("pillar"))
+			}else if(userInput.equals("pillar")) //create pillar
 			{
 				Pillar pillar = new Pillar(thingId);
 				pillar.setsquareid(squareID);
@@ -142,7 +123,7 @@ public class MAIN {
 		}else{ System.out.println("The input ID is invalid, please choose another ID!");}
 		
 		}else{System.out.println("please insert integer format!");}
-		map.refresh(floor);
+		map.refresh(floor); //refresh the map every time object is created
 		System.out.println("--Keep adding objects, or enter 'start' to start game--	" );
 		userInput = scan.nextLine();
 			
@@ -153,7 +134,7 @@ public class MAIN {
 		boolean AllBoxesAreStuckCheckFirst=true;
 		
 		
-		
+		//check if boxes are stuck, if it is, the game will end
 		for(int i=0;i<boxlist.size();i++)
 		{
 			if(boxlist.get(i).getsquareid()!=8&&boxlist.get(i).getsquareid()!=11&&boxlist.get(i).getsquareid()!=26&&boxlist.get(i).getsquareid()!=29)
@@ -179,7 +160,7 @@ public class MAIN {
 		System.out.println("Enter 'end' to stop game");
 
 		
-		while(game.IsStart)
+		while(game.IsStart) // THE GAME START AND PROCESS THE GAME FOR WHENEVER WORKER MOVE
 		{
 		
 			
@@ -188,8 +169,6 @@ public class MAIN {
 			userInput1 = scanner.nextLine();
 			userInput1 = userInput1.toLowerCase();
 			String[] Input1 = userInput1.split(" ");
-			
-			//System.out.println(Input1.length);//3
 			if(Input1.length==1)
 			{
 				game.IsStart=false;
@@ -197,9 +176,7 @@ public class MAIN {
 				System.exit(0);
 			}
 			String firstelement = Input1[0].toLowerCase();
-			
 			int workerid= Integer.parseInt(Input1[1]);
-			
 			String direction = Input1[2].toLowerCase();
 			
 			Direction d = null;
@@ -222,9 +199,6 @@ public class MAIN {
 			
 			Worker mainWorker = new Worker(100);
 			WorkerId.add(100);
-			
-			
-			
 			for(int i=0;i<workerlist.size();i++)
 			{
 			if(workerlist.get(i).getworkerid()==workerid)
@@ -261,7 +235,7 @@ public class MAIN {
 					
 				}
 			}
-			
+			//CHECK CONDITION FOR GAME ENDING
 			if(AllBoxesAreStuckCheckSecond)
 			{
 				System.out.println("All boxes are stuck, game ends now!!");
